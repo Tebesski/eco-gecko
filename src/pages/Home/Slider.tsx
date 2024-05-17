@@ -8,11 +8,22 @@ import image6 from "../../../assets/slider/6.jpg"
 import image7 from "../../../assets/slider/7.jpg"
 import fsc from "../../../assets/fsc.png"
 import { v4 as uuidv4 } from "uuid"
+import useWindowSize from "../../hooks/useWindowSize"
 
 export default function Slider() {
+   const mobileWidth = !useWindowSize(410)
    const images = [image1, image2, image3, image4, image5, image6, image7]
    const [currentImg, setCurrentImg] = useState(0)
    const [isHovering, setIsHovering] = useState(false)
+   const [currentText, setCurrentText] = useState(true)
+
+   useEffect(() => {
+      const interval = setInterval(() => {
+         setCurrentText((currentText) => !currentText)
+      }, 3000)
+
+      return () => clearInterval(interval)
+   }, [currentText, setCurrentText])
 
    useEffect(() => {
       if (!isHovering) {
@@ -26,7 +37,57 @@ export default function Slider() {
       }
    }, [currentImg, isHovering])
 
-   return (
+   function Mobile() {
+      return (
+         <div className="flex flex-col w-full h-full">
+            <figure className="flex-1 flex">
+               <div className="pb-1"></div>
+               {images.map((img, idx) => {
+                  if (currentImg === idx)
+                     return (
+                        <img
+                           key={uuidv4()}
+                           src={img}
+                           alt="Slider"
+                           className="max-h-[104px] min-h-[104px]"
+                        />
+                     )
+               })}
+            </figure>
+
+            <div className="bg-gray px-2 py-2 text-off-white text-xxs gap-y-2 flex flex-col">
+               <div className="flex gap-x-1 items-center justify-between">
+                  {currentText ? (
+                     <span className="flex-grow">
+                        <b>
+                           Compostable palm leaf plates and bowls by Eco-Gecko
+                        </b>{" "}
+                        are made from fallen palm leaves. Free of toxins and
+                        chemicals, our disposable palm leaf tableware is
+                        naturally beautiful and functional.
+                     </span>
+                  ) : (
+                     <span className="flex-grow">
+                        <b>
+                           Biodegradable and compostable wooden cutlery by
+                           Eco-Gecko
+                        </b>{" "}
+                        is made from FSC®- certified birch wood. Our disposable
+                        cutlery, and tableware are harvested and crafted
+                        sustainably.{" "}
+                     </span>
+                  )}
+
+                  <img src={fsc} alt="FSC" width={50} height={50} />
+               </div>
+            </div>
+         </div>
+      )
+   }
+
+   return mobileWidth ? (
+      <Mobile />
+   ) : (
       <div className="flex justify-center gap-x-3 w-full">
          <figure className="flex-grow relative flex z-10">
             <div className="pb-1"></div>
@@ -59,7 +120,7 @@ export default function Slider() {
             </div>
          </figure>
 
-         <div className="bg-gray w-64 h-[275px] px-4 pt-4 pb-2 text-off-white text-xs gap-y-2 flex flex-col">
+         <div className="bg-gray w-64 h-[275px] px-4 py-4 text-off-white text-xs gap-y-2 flex flex-col">
             <div className="flex gap-x-2 items-start">
                <span className="flex-grow">
                   <span className="font-bold">

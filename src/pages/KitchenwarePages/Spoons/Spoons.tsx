@@ -93,25 +93,32 @@ export default function Spoons() {
                      tableware… made from natural and renewable resources.{" "}
                   </p>
                   <br />
-                  <p>
-                     We all need to be aware of the impact our choices have on
-                     the planet. You’ll be happy to know that the FSC® (Forest
-                     Stewardship Council) recognizes and certifies that the
-                     methods of harvesting and re-planting are being{" "}
-                     <b>managed sustainably</b>. So let each one of us do our
-                     part by supporting the sustainable use of renewable
-                     resources and by choosing FSC-certified products. Going
-                     green has never been easier…{" "}
-                  </p>
-                  <br />
-                  <p>
-                     Our current line of 6 ½ inch, 4 ½ inch, and 3 ¾ inch
-                     disposable wooden spoons are all available in bulk
-                     packaging as well as 6 ½ inch wooden spoons in brown paper
-                     canisters. We also offer disposable wooden spoons with
-                     <b>customized logos, customized packaging</b>, in a wide{" "}
-                     <b>variety of shapes and sizes</b>.
-                  </p>
+                  <div className="flex">
+                     <div className="flex flex-col gap-y-2">
+                        <p>
+                           We all need to be aware of the impact our choices
+                           have on the planet. You’ll be happy to know that the
+                           FSC® (Forest Stewardship Council) recognizes and
+                           certifies that the methods of harvesting and
+                           re-planting are being <b>managed sustainably</b>. So
+                           let each one of us do our part by supporting the
+                           sustainable use of renewable resources and by
+                           choosing FSC-certified products. Going green has
+                           never been easier…{" "}
+                        </p>
+                        <br />
+                        <p>
+                           Our current line of 6 ½ inch, 4 ½ inch, and 3 ¾ inch
+                           disposable wooden spoons are all available in bulk
+                           packaging as well as 6 ½ inch wooden spoons in brown
+                           paper canisters. We also offer disposable wooden
+                           spoons with
+                           <b>customized logos, customized packaging</b>, in a
+                           wide <b>variety of shapes and sizes</b>.
+                        </p>
+                     </div>
+                     <img src={img5} alt="Disposable wooden spoons" />
+                  </div>
                   <p>
                      If you have any questions about Eco-gecko one-time-use palm
                      leaf plates, you can{" "}
@@ -125,7 +132,6 @@ export default function Spoons() {
                      now.
                   </p>
                </div>
-               <img src={img5} alt="Disposable wooden spoons" />
             </div>
          </KitchenwareTemplate>
       </section>

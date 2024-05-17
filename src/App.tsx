@@ -4,6 +4,7 @@ import MainMenu from "./components/Header/MainMenu"
 import Footer from "./components/Footer/Footer"
 import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import PopupProvider from "./context/popupContext"
 
 function App() {
    const navigate = useNavigate()
@@ -16,16 +17,18 @@ function App() {
    }, [navigate, location])
 
    return (
-      <main className="flex w-full items-center justify-center flex-col">
-         <div className="w-3/4">
-            <MainMenu />
-            <Header />
-            <div className="mt-4">
-               <Outlet />
+      <PopupProvider>
+         <main className="flex w-full items-center justify-center flex-col">
+            <div className="w-3/4">
+               <MainMenu />
+               <Header />
+               <div className="mt-4">
+                  <Outlet />
+               </div>
             </div>
-         </div>
-         <Footer />
-      </main>
+            <Footer />
+         </main>
+      </PopupProvider>
    )
 }
 

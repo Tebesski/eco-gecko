@@ -2,8 +2,28 @@ import { useState, useEffect, ChangeEvent, FormEvent } from "react"
 import Title from "../../components/Title"
 import FSC from "../../components/FSC"
 import emailjs from "emailjs-com"
+import useWindowSize from "../../hooks/useWindowSize"
+import {
+   Dialog,
+   DialogActions,
+   DialogContent,
+   DialogContentText,
+   DialogTitle,
+   Button,
+} from "@mui/material"
 
 export default function ContactUs() {
+   const mobileWidth = !useWindowSize(410)
+   const [open, setOpen] = useState(false)
+
+   const handleClickOpen = () => {
+      setOpen(true)
+   }
+
+   const handleClose = () => {
+      setOpen(false)
+   }
+
    const [form, setForm] = useState({
       name: "",
       contact: "",
@@ -83,10 +103,13 @@ export default function ContactUs() {
                }
             )
       }
+      if (mobileWidth) {
+         handleClickOpen()
+      }
    }
 
    return (
-      <section className="flex gap-x-3">
+      <section className={`flex gap-x-3 ${mobileWidth ? "mt-24" : ""}`}>
          <div className="w-full">
             <Title centered={false} addStyles="mb-2">
                Contact Us
@@ -94,7 +117,9 @@ export default function ContactUs() {
 
             <div className="flex">
                <form
-                  className="bg-green-main-30 rounded-lg w-1/2 p-6 flex flex-col items-start"
+                  className={`bg-green-main-30 rounded-lg ${
+                     mobileWidth ? "w-full mb-56" : "w-1/2"
+                  } p-6 flex flex-col items-start`}
                   onSubmit={handleSubmit}
                >
                   <input
@@ -149,44 +174,64 @@ export default function ContactUs() {
                   </button>
                </form>
 
-               <div
-                  className="text-sm flex flex-col gap-y-8 mt-9 ml-8"
-                  style={{
-                     color: "red",
-                  }}
-               >
-                  <p
+               {mobileWidth ? null : (
+                  <div
+                     className="text-sm flex flex-col gap-y-8 mt-9 ml-8"
                      style={{
-                        minHeight: "20px",
-                        transition: "opacity 0.3s",
-                        opacity: touched.name ? 1 : 0,
+                        color: "red",
                      }}
                   >
-                     {errors.name}
-                  </p>
-                  <p
-                     style={{
-                        minHeight: "20px",
-                        transition: "opacity 0.3s",
-                        opacity: touched.contact ? 1 : 0,
-                     }}
-                  >
-                     {errors.contact}
-                  </p>
-                  <p
-                     style={{
-                        minHeight: "20px",
-                        transition: "opacity 0.3s",
-                        opacity: touched.email ? 1 : 0,
-                     }}
-                  >
-                     {errors.email}
-                  </p>
-               </div>
+                     <p
+                        style={{
+                           minHeight: "20px",
+                           transition: "opacity 0.3s",
+                           opacity: touched.name ? 1 : 0,
+                        }}
+                     >
+                        {errors.name}
+                     </p>
+                     <p
+                        style={{
+                           minHeight: "20px",
+                           transition: "opacity 0.3s",
+                           opacity: touched.contact ? 1 : 0,
+                        }}
+                     >
+                        {errors.contact}
+                     </p>
+                     <p
+                        style={{
+                           minHeight: "20px",
+                           transition: "opacity 0.3s",
+                           opacity: touched.email ? 1 : 0,
+                        }}
+                     >
+                        {errors.email}
+                     </p>
+                  </div>
+               )}
             </div>
          </div>
 
-         <FSC topVal={"top-34"} leftVal={"left-[67.5%]"} />
+         {mobileWidth ? null : <FSC topVal={"top-34"} leftVal={"left-[70%]"} />}
+
+         {mobileWidth && (
+            <Dialog open={open} onClose={handleClose}>
+               <DialogTitle>{"Submit Form"}</DialogTitle>
+               <DialogContent>
+                  <DialogContentText>
+                     {Object.values(errors).some((error) => error !== "")
+                        ? Object.values(errors).map((error, index) => (
+                             <p key={index}>{error}</p>
+                          ))
+                        : "Form submitted successfully!"}
+                  </DialogContentText>
+               </DialogContent>
+               <DialogActions>
+                  <Button onClick={handleClose}>Close</Button>
+               </DialogActions>
+            </Dialog>
+         )}
       </section>
    )
 }

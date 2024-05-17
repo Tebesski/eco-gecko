@@ -46,15 +46,17 @@ export const QA = ({
    children,
    withIco = true,
    labelClasses,
+   onClick,
 }: {
    question: string
    answer?: string | ReactNode
    labelClasses?: string
    children?: ReactNode
    withIco?: boolean
+   onClick?: (...args: any[]) => void
 }) => {
    return (
-      <div className="flex flex-col gap-y-2 ml-[-11px]">
+      <div className="flex flex-col gap-y-2 ml-[-11px]" onClick={onClick}>
          <Question question={question} labelClasses={labelClasses} />
          <div className="bg-green-main bg-opacity-20 rounded-lg p-3 flex flex-col gap-y-2 ml-7">
             <Answer withIco={withIco} answer={answer} />

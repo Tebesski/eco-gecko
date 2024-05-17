@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import useWindowSize from "../hooks/useWindowSize"
 
 export default function Title({
    children,
@@ -9,7 +10,23 @@ export default function Title({
    addStyles?: string
    centered?: boolean
 }) {
-   return (
+   const mobileWidth = !useWindowSize(410)
+
+   function Mobile() {
+      return (
+         <h1
+            className={`font-extrabold text-green-main ${
+               centered ? "text-center" : ""
+            } text-xl ${addStyles}`}
+         >
+            {children}
+         </h1>
+      )
+   }
+
+   return mobileWidth ? (
+      <Mobile />
+   ) : (
       <h1
          className={`font-extrabold text-green-main ${
             centered ? "text-center" : ""

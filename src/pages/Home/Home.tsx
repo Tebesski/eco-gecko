@@ -2,20 +2,26 @@ import Slider from "./Slider"
 import woodenCutlery from "../../../assets/wooden-cutlery.jpg"
 import palmLeafPlates from "../../../assets/palm-leaf-plates.jpg"
 import woodenKsf from "../../../assets/wooden-knife-spoon-fork.jpg"
+import Title from "../../components/Title"
+import useWindowSize from "../../hooks/useWindowSize"
 
 export default function Home() {
+   const mobileWidth = !useWindowSize(410)
+
    return (
-      <section className="flex flex-col gap-y-10">
+      <section className={`flex flex-col gap-y-3`}>
          <header className="">
             <Slider />
          </header>
 
          <article className="flex flex-col gap-y-6">
-            <h1 className="font-extrabold text-green-main text-center text-3xl">
-               Wooden cutlery and palm leaf plates by eco-gecko
-            </h1>
+            <Title>Wooden cutlery and palm leaf plates by eco-gecko</Title>
 
-            <div className="flex flex-col text-sm gap-y-6">
+            <div
+               className={`flex flex-col text-sm gap-y-2 ${
+                  mobileWidth ? "text-xs" : "text-sm"
+               }`}
+            >
                <span>
                   <b>The products:</b> Our disposable, biodegradable, and
                   compostable wooden cutlery is <b>100% natural</b> and is made
@@ -31,7 +37,15 @@ export default function Home() {
                   being composed of <b>completely organic</b> material.
                </span>
 
-               <div className="flex gap-x-8 text-sm">
+               <div className="border-green-main border-1 p-4">
+                  <img src={woodenCutlery} alt="Wooden cutlery" />
+               </div>
+
+               <div
+                  className={`flex gap-x-4 ${
+                     mobileWidth ? "text-xs" : "text-sm"
+                  }`}
+               >
                   <span>
                      <p>
                         <b>The reason:</b> Biodegradable and compostable wooden
@@ -55,25 +69,32 @@ export default function Home() {
                         <b>managed sustainably.</b>
                      </p>
                   </span>
-
-                  <img src={woodenCutlery} alt="Wooden cutlery" className="" />
                </div>
             </div>
          </article>
 
-         <article className="flex gap-x-8 text-sm">
-            <div className="border border-black rounded-2xl p-4 flex flex-col items-center justify-center gap-y-4">
-               <h6>
-                  <b>FSC® Certified</b>
-               </h6>
-               <p>
-                  Eco-Gecko Creation LLC carries Forest Stewardship Council™
-                  Chain of Custody certification. FSC certification ensures that
-                  wood comes from well-managed forests. Contact us to learn more
-                  about our FSC certified products.
-               </p>
-            </div>
-            <span>
+         <div
+            className={`border border-black rounded-2xl p-4 flex flex-col items-center justify-center gap-y-4 ${
+               mobileWidth ? "text-xs p-1 gap-y-0 text-center" : ""
+            }`}
+         >
+            <h6>
+               <b>FSC® Certified</b>
+            </h6>
+            <p>
+               Eco-Gecko Creation LLC carries Forest Stewardship Council™ Chain
+               of Custody certification. FSC certification ensures that wood
+               comes from well-managed forests. Contact us to learn more about
+               our FSC certified products.
+            </p>
+         </div>
+
+         <article className="flex gap-x-8">
+            <span
+               className={`flex flex-col text-sm gap-y-2 ${
+                  mobileWidth ? "text-xs" : "text-sm"
+               }`}
+            >
                <p>
                   As for our palm leaf plates and bowls, it would be{" "}
                   <b>hard to find anything more eco-friendly</b> than disposable
@@ -101,7 +122,11 @@ export default function Home() {
             </span>
          </article>
 
-         <article className="text-sm">
+         <article
+            className={`flex flex-col text-sm gap-y-2 ${
+               mobileWidth ? "text-xs" : "text-sm"
+            }`}
+         >
             <p>
                <b>The quality:</b> The <b>natural beauty and strength</b> of the
                birch wood makes for stylish yet functional cutlery, as well. So
@@ -117,14 +142,15 @@ export default function Home() {
             </p>
          </article>
 
+         <img
+            src={palmLeafPlates}
+            alt="Palm leaf plates"
+            className="w-80 h-40"
+         />
          <article>
-            <div className="flex gap-x-8 text-sm">
-               <img
-                  src={palmLeafPlates}
-                  alt="Palm leaf plates"
-                  className="w-80 h-40"
-               />
-
+            <div
+               className={`flex gap-x-8 ${mobileWidth ? "text-xs" : "text-sm"}`}
+            >
                <span>
                   <p>
                      With something this <b>beautiful</b> and this <b>strong</b>
@@ -139,7 +165,7 @@ export default function Home() {
                   </p>
                   <br />
                   <p>
-                     <b>The places:</b> From <b>high-end catered events</b> to
+                     <b>The places:</b> From <b>high-end catered events</b> to{" "}
                      <b>take-out</b> restaurants… and from <b>wineries</b> to
                      office <b>lunch rooms</b>... The list of places that are
                      already enjoying our biodegradable and compostable
@@ -151,7 +177,7 @@ export default function Home() {
             </div>
          </article>
 
-         <article className="text-sm">
+         <article className={`${mobileWidth ? "text-xs" : "text-sm"}`}>
             <p>
                <b>The cost:</b> Eco-Gecko biodegradable and compostable
                tableware is not only natural and stylish, but they are also{" "}
@@ -166,8 +192,12 @@ export default function Home() {
             </p>
          </article>
 
+         <img src={woodenKsf} alt="Wooden cutlery" className="" />
+
          <article>
-            <div className="flex gap-x-8 text-sm">
+            <div
+               className={`flex gap-x-8 ${mobileWidth ? "text-xs" : "text-sm"}`}
+            >
                <span>
                   <p>
                      <b>The purchase:</b> Buying Eco Gecko biodegradable and
@@ -210,12 +240,10 @@ export default function Home() {
                      to learn how Eco-Gecko can personalize our products!
                   </p>
                </span>
-
-               <img src={woodenKsf} alt="Wooden cutlery" className="" />
             </div>
          </article>
 
-         <article className="text-sm">
+         <article className={`${mobileWidth ? "text-xs" : "text-sm"}`}>
             <p>
                <b>The info:</b> If you have any questions about Eco-Gecko
                biodegradable and compostable wooden cutlery or our other

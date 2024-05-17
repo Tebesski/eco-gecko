@@ -10,8 +10,11 @@ import id from "../../../assets/where-to-buy/imperial-dade-logo.jpg"
 import uls from "../../../assets/where-to-buy/ui_logo_south.jpg"
 import web from "../../../assets/where-to-buy/webstaurantstore-logo-360.jpg"
 import yes from "../../../assets/yes.png"
+import useWindowSize from "../../hooks/useWindowSize"
 
 export default function WhereToBuy() {
+   const mobileWidth = !useWindowSize(410)
+
    function generateTableCells(
       img1: string,
       img2?: string,
@@ -50,17 +53,29 @@ export default function WhereToBuy() {
                   <tr>
                      <td></td>
                      <td>
-                        <p className="w-2/3 text-center">
+                        <p
+                           className={`w-2/3 text-center ${
+                              mobileWidth ? "text-xs" : ""
+                           }`}
+                        >
                            <b>Wooden cutlery</b>
                         </p>
                      </td>
                      <td>
-                        <p className="w-2/3 text-center">
+                        <p
+                           className={`w-2/3 text-center ${
+                              mobileWidth ? "text-xs" : ""
+                           }`}
+                        >
                            <b>Palm Leaf Plates</b>
                         </p>
                      </td>
                      <td>
-                        <p className="w-2/3 text-center">
+                        <p
+                           className={`w-2/3 text-center ${
+                              mobileWidth ? "text-xs" : ""
+                           }`}
+                        >
                            <b>Palm Leaf Bowls</b>
                         </p>
                      </td>
@@ -102,12 +117,20 @@ export default function WhereToBuy() {
                   </tr>
                   {/* Eleventh row */}
                   <tr>
-                     <td className="flex justify-center border border-green-main hover:outline-green-main transition-all duration-200 cursor-pointer">
+                     <td
+                        className={`flex justify-center ${
+                           mobileWidth ? "" : "border"
+                        } border-green-main cursor-pointer`}
+                     >
                         <a
                            href="https://letsgogreen.biz/search?type=product&q=Eco-gecko"
                            target="_blank"
                         >
-                           <img src={lgg} alt="trs" />
+                           <img
+                              src={lgg}
+                              alt="trs"
+                              className={`${mobileWidth ? "mt-5" : ""}`}
+                           />
                         </a>
                      </td>
                      <td>
@@ -124,7 +147,7 @@ export default function WhereToBuy() {
             </table>
          </div>
 
-         <FSC topVal={"top-34"} leftVal={"left-[70%]"} />
+         {mobileWidth ? null : <FSC topVal={"top-34"} leftVal={"left-[70%]"} />}
       </section>
    )
 }
