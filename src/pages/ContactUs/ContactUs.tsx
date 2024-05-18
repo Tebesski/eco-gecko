@@ -1,7 +1,7 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react"
+import { useState, useEffect, ChangeEvent, FormEvent, useRef } from "react"
 import Title from "../../components/Title"
 import FSC from "../../components/FSC"
-import emailjs from "emailjs-com"
+import emailjs from "@emailjs/browser"
 import useWindowSize from "../../hooks/useWindowSize"
 import {
    Dialog,
@@ -10,11 +10,18 @@ import {
    DialogContentText,
    DialogTitle,
    Button,
+   Backdrop,
+   CircularProgress,
 } from "@mui/material"
+import { usePopup } from "../../context/popupContext"
 
 export default function ContactUs() {
    const mobileWidth = !useWindowSize(450)
    const [open, setOpen] = useState(false)
+   const [loading, setLoading] = useState(false)
+   const { openPopup } = usePopup()
+
+   const formRef = useRef<HTMLFormElement>(null)
 
    const handleClickOpen = () => {
       setOpen(true)
@@ -81,25 +88,58 @@ export default function ContactUs() {
    const handleChange = (
       e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
    ) => {
-      setForm({ ...form, [e.target.name]: e.target.value })
+      const { name, value } = e.target
+
+      if (name === "contact") {
+         setForm((prev) => ({
+            ...prev,
+            [name]: "+" + value.replace(/^\+/, ""),
+         }))
+      } else {
+         setForm((prev) => ({
+            ...prev,
+            [name]: value,
+         }))
+      }
    }
 
    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       if (validateForm()) {
+         if (!formRef.current) return
+         setLoading(true)
          emailjs
-            .send(
+            .sendForm(
                import.meta.env.VITE_APP_SERVICE_ID,
                import.meta.env.VITE_APP_TEMPLATE_ID,
-               form,
-               import.meta.env.VITE_APP_USER_ID
+               formRef.current,
+               {
+                  publicKey: import.meta.env.VITE_APP_PUBLIC_KEY,
+               }
             )
             .then(
-               (response) => {
-                  console.log("SUCCESS!", response.status, response.text)
+               () => {
+                  setForm({
+                     name: "",
+                     contact: "",
+                     email: "",
+                     comments: "",
+                  })
+                  setLoading(false)
+                  openPopup(
+                     "Form submitted successfully!",
+                     <p>We will get back to you soon :)</p>
+                  )
                },
-               (err) => {
-                  console.log("FAILED...", err)
+               () => {
+                  openPopup(
+                     "Sorry...",
+                     <div>
+                        <p>Something went wrong, the message was not sent.</p>
+                        <br />
+                        <p>Try again later, please!</p>
+                     </div>
+                  )
                }
             )
       }
@@ -110,6 +150,11 @@ export default function ContactUs() {
 
    return (
       <section className={`flex gap-x-3 ${mobileWidth ? "mt-24" : ""}`}>
+         {loading && (
+            <Backdrop open={loading} style={{ color: "#fff", zIndex: 1500 }}>
+               <CircularProgress color="inherit" />
+            </Backdrop>
+         )}
          <div className="w-full">
             <Title centered={false} addStyles="mb-2">
                Contact Us
@@ -117,6 +162,7 @@ export default function ContactUs() {
 
             <div className="flex">
                <form
+                  ref={formRef}
                   className={`bg-green-main-30 rounded-lg ${
                      mobileWidth ? "w-full mb-56" : "w-1/2"
                   } p-6 flex flex-col items-start`}
