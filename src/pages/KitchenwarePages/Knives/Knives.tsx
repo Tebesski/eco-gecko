@@ -9,7 +9,7 @@ import useWindowSize from "../../../hooks/useWindowSize"
 import MobileArticleImg from "../MobileArticleImg"
 
 export default function Knives() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    const listingItems: ListingType[] = [
       {

@@ -3,7 +3,7 @@ import gecko from "../../../assets/gecko.png"
 import useWindowSize from "../../hooks/useWindowSize"
 
 export default function HeaderLogo() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    function Mobile() {
       return (

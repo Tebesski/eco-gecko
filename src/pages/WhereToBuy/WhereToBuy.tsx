@@ -13,7 +13,7 @@ import yes from "../../../assets/yes.png"
 import useWindowSize from "../../hooks/useWindowSize"
 
 export default function WhereToBuy() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    function generateTableCells(
       img1: string,

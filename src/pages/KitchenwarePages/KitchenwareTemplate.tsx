@@ -19,7 +19,7 @@ export default function KitchenwareTemplate({
    listingItems,
    children,
 }: KitchenwareTemplateProps) {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    const gridTemplateColumns = `repeat(${gridCount}, 1fr)`
    const gridTemplateRows = `repeat(${gridCount}, auto)`

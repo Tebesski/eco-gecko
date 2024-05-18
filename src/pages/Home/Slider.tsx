@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from "uuid"
 import useWindowSize from "../../hooks/useWindowSize"
 
 export default function Slider() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
    const images = [image1, image2, image3, image4, image5, image6, image7]
    const [currentImg, setCurrentImg] = useState(0)
    const [isHovering, setIsHovering] = useState(false)

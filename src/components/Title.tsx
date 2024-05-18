@@ -10,7 +10,7 @@ export default function Title({
    addStyles?: string
    centered?: boolean
 }) {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    function Mobile() {
       return (

@@ -24,7 +24,7 @@ export default function Listing({
    listMode,
    gridCount,
 }: ListingType) {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
    const { openPopup } = usePopup()
 
    function handleOpenDetails(listMode: boolean) {

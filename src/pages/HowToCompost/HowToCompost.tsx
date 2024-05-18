@@ -8,7 +8,7 @@ import CompostQA from "./CompostQA"
 import StepsToCompost from "./StepsToCompost"
 
 export default function HowToCompost() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    const { openPopup } = usePopup()
 

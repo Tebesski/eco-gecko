@@ -13,7 +13,7 @@ import {
 } from "@mui/material"
 
 export default function ContactUs() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
    const [open, setOpen] = useState(false)
 
    const handleClickOpen = () => {

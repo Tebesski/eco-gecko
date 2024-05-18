@@ -12,7 +12,7 @@ const navLinks = [
 ]
 
 export default function KitchenwareMenu() {
-   const mobileWidth = useWindowSize(410)
+   const mobileWidth = useWindowSize(450)
 
    return (
       mobileWidth && (

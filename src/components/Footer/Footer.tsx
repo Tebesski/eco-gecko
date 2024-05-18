@@ -3,7 +3,7 @@ import FooterMenu from "./FooterMenu"
 
 export default function Footer() {
    const currentYear = new Date().getFullYear()
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    function Mobile() {
       return (

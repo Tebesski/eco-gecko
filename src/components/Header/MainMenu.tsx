@@ -14,7 +14,7 @@ import { useState } from "react"
 
 export default function MainMenu() {
    const [mobileOpen, setMobileOpen] = useState(false)
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    const kitchenwareLinks = [
       { to: "kitchenware/plates", text: "Palm plates" },

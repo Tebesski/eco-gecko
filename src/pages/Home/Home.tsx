@@ -6,7 +6,7 @@ import Title from "../../components/Title"
 import useWindowSize from "../../hooks/useWindowSize"
 
 export default function Home() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    return (
       <section className={`flex flex-col gap-y-3`}>

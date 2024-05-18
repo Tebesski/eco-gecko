@@ -11,7 +11,7 @@ import MobileArticleImg from "../MobileArticleImg"
 import useWindowSize from "../../../hooks/useWindowSize"
 
 export default function Spoons() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
 
    const listingItems: ListingType[] = [
       {

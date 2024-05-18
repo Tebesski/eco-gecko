@@ -6,7 +6,7 @@ import { usePopup } from "../../context/popupContext"
 import { ReactNode } from "react"
 
 export default function Faq() {
-   const mobileWidth = !useWindowSize(410)
+   const mobileWidth = !useWindowSize(450)
    const { openPopup } = usePopup()
 
    const handleClick = (title: string, content: ReactNode) => {
