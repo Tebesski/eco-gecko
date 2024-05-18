@@ -3,9 +3,9 @@ import { Dialog, DialogTitle, DialogContent } from "@mui/material"
 
 type PopupContextType = {
    isOpen: boolean
-   title: string
+   title: string | ReactNode
    content: ReactNode
-   openPopup: (title: string, content: ReactNode) => void
+   openPopup: (title: string | ReactNode, content: ReactNode) => void
    closePopup: () => void
 }
 
@@ -13,10 +13,10 @@ const PopupContext = createContext<PopupContextType | undefined>(undefined)
 
 export default function PopupProvider({ children }: { children: ReactNode }) {
    const [isOpen, setIsOpen] = useState(false)
-   const [title, setTitle] = useState("")
+   const [title, setTitle] = useState<string | ReactNode>("")
    const [content, setContent] = useState<ReactNode>(null)
 
-   const openPopup = (title: string, content: ReactNode) => {
+   const openPopup = (title: string | ReactNode, content: ReactNode) => {
       setTitle(title)
       setContent(content)
       setIsOpen(true)

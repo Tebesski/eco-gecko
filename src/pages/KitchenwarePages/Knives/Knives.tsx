@@ -5,8 +5,12 @@ import img2 from "../../../../assets/kitchenware/knives/2.jpg"
 import img3 from "../../../../assets/kitchenware/knives/3.jpg"
 import { ListingType } from "../Listing"
 import CustomLink from "../../../components/CustomLink"
+import useWindowSize from "../../../hooks/useWindowSize"
+import MobileArticleImg from "../MobileArticleImg"
 
 export default function Knives() {
+   const mobileWidth = !useWindowSize(410)
+
    const listingItems: ListingType[] = [
       {
          img: img1,
@@ -44,12 +48,17 @@ export default function Knives() {
          <KitchenwareTemplate
             headerImg={fskHeader}
             title={"Disposable Wooden Forks"}
-            gridCount={3}
+            gridCount={mobileWidth ? 1 : 3}
             listingItems={listingItems}
          >
-            <h4 className="font-extrabold">Disposable Wooden Knives</h4>
+            <div className={`${mobileWidth && "ml-5"}`}>
+               <h4 className={`font-extrabold ${mobileWidth && "ml-3"}`}>
+                  Disposable Wooden Knives
+               </h4>
+               {mobileWidth && <MobileArticleImg img={img3} />}
+            </div>
             <br />
-            <p>
+            <p className={`${mobileWidth && "text-sm"}`}>
                Eco-gecko disposable knives are not only an environmentally smart
                decision, but they are also completely functional. Many of our
                customers have been surprised to find out that these disposable
@@ -57,7 +66,7 @@ export default function Knives() {
                our wooden cutlery work well with hot or cold foods.
             </p>
             <br />
-            <p>
+            <p className={`${mobileWidth && "text-sm"}`}>
                Wooden knives by Eco-gecko are made of birch wood in a process
                that does not employ the use of any chemicals. Only hot water is
                used to soften the wood for forming and sterilizing. Therefore,
@@ -68,7 +77,12 @@ export default function Knives() {
                at a commercial composting facility.
             </p>
             <div className="flex gap-x-2">
-               <div className="flex flex-col gap-y-3">
+               <div
+                  className={`flex flex-col ${
+                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
+                  }`}
+               >
+                  {" "}
                   <p>
                      One more reason to feel good about our disposable wooden
                      knives and cutlery is that the FSC® (Forest Stewardship
@@ -83,7 +97,7 @@ export default function Knives() {
                      Aside from our current stock of 6 ½ inch disposable wooden
                      knives in bulk and in brown paper canisters, disposable
                      wooden knives with{" "}
-                     <b>customized logos, customized packaging</b>, in a wide
+                     <b>customized logos, customized packaging</b>, in a wide{" "}
                      <b>variety of sizes</b> are also available.
                   </p>
                   <p>
@@ -99,7 +113,7 @@ export default function Knives() {
                      now.
                   </p>
                </div>
-               <img src={img3} alt="Palm knives" />
+               {!mobileWidth && <img src={img3} alt="Palm knives" />}{" "}
             </div>
          </KitchenwareTemplate>
       </section>

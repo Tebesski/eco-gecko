@@ -6,8 +6,12 @@ import img3 from "../../../../assets/kitchenware/forks/3.jpg"
 import img4 from "../../../../assets/kitchenware/forks/wooden-forks-1.jpg"
 import { ListingType } from "../Listing"
 import CustomLink from "../../../components/CustomLink"
+import useWindowSize from "../../../hooks/useWindowSize"
+import MobileArticleImg from "../MobileArticleImg"
 
 export default function Forks() {
+   const mobileWidth = !useWindowSize(410)
+
    const listingItems: ListingType[] = [
       {
          img: img1,
@@ -58,12 +62,18 @@ export default function Forks() {
          <KitchenwareTemplate
             headerImg={fskHeader}
             title={"Disposable Wooden Forks"}
-            gridCount={3}
+            gridCount={mobileWidth ? 1 : 3}
             listingItems={listingItems}
          >
-            <h4 className="font-extrabold">Disposable Wooden Forks</h4>
+            <div className={`${mobileWidth && "ml-5"}`}>
+               <h4 className={`font-extrabold ${mobileWidth && "ml-3"}`}>
+                  Disposable Wooden Forks
+               </h4>
+               {mobileWidth && <MobileArticleImg img={img4} />}
+            </div>
+
             <br />
-            <p>
+            <p className={`${mobileWidth && "text-sm"}`}>
                Eco-gecko disposable wooden forks are not only beautiful,they are
                also completely functional. These disposable wooden forks are
                very sturdy which allows them to handle salads and meats with
@@ -71,7 +81,7 @@ export default function Forks() {
                well with hot or cold foods.{" "}
             </p>
             <br />
-            <p>
+            <p className={`${mobileWidth && "text-sm"}`}>
                Wooden forks by Eco-gecko are made of birch wood in a process
                that does not employ the use of any chemicals. Only hot water is
                used to soften the wood for forming and sterilizing. Therefore,
@@ -82,9 +92,14 @@ export default function Forks() {
                composting facility.{" "}
             </p>
             <div className="flex gap-x-2">
-               <div className="flex flex-col gap-y-3">
+               <div
+                  className={`flex flex-col ${
+                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
+                  }`}
+               >
+                  {" "}
                   <p>
-                     All of our disposable wooden cutlery are made from
+                     All of our disposable wooden cutlery are made from{" "}
                      <b>FSC®-certified birch wood</b>. This means that the FSC
                      (Forest Stewardship Council) recognizes and certifies that
                      the methods of harvesting and re-planting are being{" "}
@@ -95,7 +110,7 @@ export default function Forks() {
                      Our 6 ½ inch compostable wooden forks come in bulk
                      packaging as well as in 100-packs in brown paper canisters.
                      We also offer disposable wooden forks with{" "}
-                     <b>customized logos, customized packaging</b>, in a wide
+                     <b>customized logos, customized packaging</b>, in a wide{" "}
                      <b>variety of shapes and sizes</b>.{" "}
                   </p>
                   <p>
@@ -111,7 +126,7 @@ export default function Forks() {
                      now.
                   </p>
                </div>
-               <img src={img4} alt="Palm forks" />
+               {!mobileWidth && <img src={img4} alt="Palm forks" />}
             </div>
          </KitchenwareTemplate>
       </section>

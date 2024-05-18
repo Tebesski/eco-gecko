@@ -6,8 +6,12 @@ import img3 from "../../../../assets/kitchenware/bowls/3.jpg"
 import img4 from "../../../../assets/kitchenware/bowls/4.jpg"
 import { ListingType } from "../Listing"
 import CustomLink from "../../../components/CustomLink"
+import MobileArticleImg from "../MobileArticleImg"
+import useWindowSize from "../../../hooks/useWindowSize"
 
 export default function Bowls() {
+   const mobileWidth = !useWindowSize(410)
+
    const listingItems: ListingType[] = [
       {
          img: img1,
@@ -17,9 +21,9 @@ export default function Bowls() {
          },
          info: {
             element: [
-               <>
+               <li>
                   <b>5 inch x 5 inch</b>, 100 pieces per case
-               </>,
+               </li>,
                <li>
                   <b>4 inch x 4 inch</b>, 200 pieces per case
                </li>,
@@ -35,9 +39,9 @@ export default function Bowls() {
          },
          info: {
             element: [
-               <>
+               <li>
                   <b>8.5 inch round bowls</b>, 100 pieces per case
-               </>,
+               </li>,
                <li>
                   <b>4 inch round bowls</b>, 100 pieces per case
                </li>,
@@ -71,16 +75,21 @@ export default function Bowls() {
             listingItems={listingItems}
          >
             <h4 className="font-extrabold">Palm Leaf Bowls</h4>
+            {mobileWidth && <MobileArticleImg img={img4} />}
             <br />
             <div className="flex gap-x-2">
-               <div className="flex flex-col gap-y-3">
+               <div
+                  className={`flex flex-col ${
+                     mobileWidth ? "text-sm gap-y-2" : "gap-y-3"
+                  }`}
+               >
                   <p>
                      Beautiful, strong, and smart… Our line of palm leaf bowls
                      is designed to provide an <b>eco-friendly alternative</b>{" "}
                      to the non-biodegrading disposable bowls that are overused
                      in the food industry. It would be{" "}
                      <b>difficult to find anything more earth-friendly</b> than
-                     wooden bowls made from fallen palm leaves which in the past
+                     wooden bowls made from fallen palm leaves which in the past{" "}
                      <b>were often discarded and burned</b>. So using this
                      natural by-product from areca palm trees not only stops the
                      senseless burning of a useful product, but it also{" "}
@@ -113,7 +122,7 @@ export default function Bowls() {
                      now.
                   </p>
                </div>
-               <img src={img4} alt="Palm leaf bowls" />
+               {!mobileWidth && <img src={img4} alt="Palm leaf bowls" />}
             </div>
          </KitchenwareTemplate>
       </section>

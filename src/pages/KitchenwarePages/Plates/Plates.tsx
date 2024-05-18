@@ -6,20 +6,24 @@ import img3 from "../../../../assets/kitchenware/plates/3.jpg"
 import img4 from "../../../../assets/kitchenware/plates/4.jpg"
 import { ListingType } from "../Listing"
 import CustomLink from "../../../components/CustomLink"
+import useWindowSize from "../../../hooks/useWindowSize"
+import MobileArticleImg from "../MobileArticleImg"
 
 export default function Plates() {
+   const mobileWidth = !useWindowSize(410)
+
    const listingItems: ListingType[] = [
       {
          img: img1,
          title: { element: "Square Palm Leaf Plates" },
          subtitle: {
-            element: <p className="text-xs ">Available in 4 sizes:</p>,
+            element: <p className="text-xs ">Available in 4 sizes</p>,
          },
          info: {
             element: [
-               <>
+               <li>
                   <b>10 inch x 10 inch</b>, 100 pieces per case
-               </>,
+               </li>,
                <li>
                   <b>8 inch x 8 inch</b>, 100 pieces per case
                </li>,
@@ -37,13 +41,13 @@ export default function Plates() {
          img: img2,
          title: { element: "Heart Palm Leaf Plates" },
          subtitle: {
-            element: <p className="text-xs ">Available in 2 sizes:</p>,
+            element: <p className="text-xs ">Available in 2 sizes</p>,
          },
          info: {
             element: [
-               <>
+               <li>
                   <b>6.5 inch heart plates</b>, 100 pieces per case
-               </>,
+               </li>,
                <li>
                   <b>4 inch round plates</b>, 100 pieces per case
                </li>,
@@ -74,8 +78,9 @@ export default function Plates() {
             listingItems={listingItems}
          >
             <h4 className="font-extrabold">Disposable palm leaf plates</h4>
+            {mobileWidth && <MobileArticleImg img={img4} />}
             <br />
-            <p>
+            <p className={`${mobileWidth && "text-sm"}`}>
                Disposable palm leaf plates by Eco-Gecko are naturally beautiful
                dinnerware made from fallen palm leaves. These wooden plates are
                engineered to be more than durable. With something this{" "}
@@ -88,7 +93,11 @@ export default function Plates() {
             </p>
             <br />
             <div className="flex gap-x-2">
-               <div className="flex flex-col gap-y-3">
+               <div
+                  className={`flex flex-col ${
+                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
+                  }`}
+               >
                   <p>
                      Our line of palm leaf tableware was designed to provide an{" "}
                      <b>eco-friendly alternative</b> to the non-biodegrading
@@ -126,7 +135,9 @@ export default function Plates() {
                      now.
                   </p>
                </div>
-               <img src={img4} alt="Palm leaf plates heart shaped" />
+               {mobileWidth ? null : (
+                  <img src={img4} alt="Palm leaf plates heart shaped" />
+               )}
             </div>
          </KitchenwareTemplate>
       </section>
