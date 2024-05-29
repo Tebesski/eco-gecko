@@ -17,6 +17,16 @@ import Knives from "./pages/KitchenwarePages/Knives/Knives.tsx"
 import Spoons from "./pages/KitchenwarePages/Spoons/Spoons.tsx"
 import Customization from "./pages/Customization/Customization.tsx"
 
+window.addEventListener("load", function () {
+   var viewport = document.querySelector("meta[name=viewport]")
+   if (viewport) {
+      viewport.setAttribute(
+         "content",
+         "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      )
+   }
+})
+
 const router = createBrowserRouter([
    {
       path: "/",
