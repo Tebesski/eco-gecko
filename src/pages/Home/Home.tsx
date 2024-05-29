@@ -8,6 +8,26 @@ import useWindowSize from "../../hooks/useWindowSize"
 export default function Home() {
    const mobileWidth = !useWindowSize(450)
 
+   const FSC = () => {
+      return (
+         <div
+            className={`border border-black rounded-2xl p-4 flex flex-col items-center justify-center gap-y-4 ${
+               mobileWidth && "text-xs p-1 gap-y-0 text-center"
+            }`}
+         >
+            <h6>
+               <b>FSC® Certified</b>
+            </h6>
+            <p>
+               Eco-Gecko Creation LLC carries Forest Stewardship Council™ Chain
+               of Custody certification. FSC certification ensures that wood
+               comes from well-managed forests. Contact us to learn more about
+               our FSC certified products.
+            </p>
+         </div>
+      )
+   }
+
    return (
       <section className={`flex flex-col gap-y-3`}>
          <header className="">
@@ -18,8 +38,8 @@ export default function Home() {
             <Title>Wooden cutlery and palm leaf plates by eco-gecko</Title>
 
             <div
-               className={`flex flex-col text-sm gap-y-2 ${
-                  mobileWidth ? "text-xs" : "text-sm"
+               className={`flex flex-col gap-y-2 ${
+                  mobileWidth ? "text-xs" : "text-lg"
                }`}
             >
                <span>
@@ -37,16 +57,18 @@ export default function Home() {
                   being composed of <b>completely organic</b> material.
                </span>
 
-               <div className="border-green-main border-1 p-4">
-                  <img src={woodenCutlery} alt="Wooden cutlery" />
-               </div>
+               {mobileWidth && (
+                  <div className="border-green-main border-1 p-4">
+                     <img src={woodenCutlery} alt="Wooden cutlery" />
+                  </div>
+               )}
 
                <div
                   className={`flex gap-x-4 ${
-                     mobileWidth ? "text-xs" : "text-sm"
+                     mobileWidth ? "text-xs" : "text-lg"
                   }`}
                >
-                  <span>
+                  <span className={`${!mobileWidth && "w-3/4"}`}>
                      <p>
                         <b>The reason:</b> Biodegradable and compostable wooden
                         cutlery and palm leaf tableware by Eco-Gecko were
@@ -69,33 +91,27 @@ export default function Home() {
                         <b>managed sustainably.</b>
                      </p>
                   </span>
+
+                  {!mobileWidth && (
+                     <div className="border-green-main border-1 p-4">
+                        <img src={woodenCutlery} alt="Wooden cutlery" />
+                     </div>
+                  )}
                </div>
             </div>
          </article>
 
-         <div
-            className={`border border-black rounded-2xl p-4 flex flex-col items-center justify-center gap-y-4 ${
-               mobileWidth ? "text-xs p-1 gap-y-0 text-center" : ""
-            }`}
-         >
-            <h6>
-               <b>FSC® Certified</b>
-            </h6>
-            <p>
-               Eco-Gecko Creation LLC carries Forest Stewardship Council™ Chain
-               of Custody certification. FSC certification ensures that wood
-               comes from well-managed forests. Contact us to learn more about
-               our FSC certified products.
-            </p>
-         </div>
+         {mobileWidth && <FSC />}
 
          <article className="flex gap-x-8">
+            {!mobileWidth && <FSC />}
+
             <span
                className={`flex flex-col text-sm gap-y-2 ${
-                  mobileWidth ? "text-xs" : "text-sm"
+                  mobileWidth ? "text-xs" : "text-lg"
                }`}
             >
-               <p>
+               <p className={`${mobileWidth ? "text-xs" : "text-lg"}`}>
                   As for our palm leaf plates and bowls, it would be{" "}
                   <b>hard to find anything more eco-friendly</b> than disposable
                   dinnerware made from fallen palm leaves which in the past{" "}
@@ -111,7 +127,7 @@ export default function Home() {
                   <b>contributes to producing nutrient-rich topsoil.</b>
                </p>
                <br />
-               <p>
+               <p className={`${mobileWidth ? "text-xs" : "text-lg"}`}>
                   In addition to our tableware, the boxes and cartons used to
                   package our biodegradable and disposable cutlery, plates and
                   bowls are made from <b>recycled paper products</b>. Geckos
@@ -124,10 +140,10 @@ export default function Home() {
 
          <article
             className={`flex flex-col text-sm gap-y-2 ${
-               mobileWidth ? "text-xs" : "text-sm"
+               mobileWidth ? "text-xs" : "text-lg"
             }`}
          >
-            <p>
+            <p className={`${mobileWidth ? "text-xs" : "text-lg"}`}>
                <b>The quality:</b> The <b>natural beauty and strength</b> of the
                birch wood makes for stylish yet functional cutlery, as well. So
                whether you are planning an office party, an outdoor event, a
@@ -142,15 +158,25 @@ export default function Home() {
             </p>
          </article>
 
-         <img
-            src={palmLeafPlates}
-            alt="Palm leaf plates"
-            className="w-80 h-40"
-         />
+         {mobileWidth && (
+            <img
+               src={palmLeafPlates}
+               alt="Palm leaf plates"
+               className="w-80 h-40"
+            />
+         )}
+
          <article>
             <div
-               className={`flex gap-x-8 ${mobileWidth ? "text-xs" : "text-sm"}`}
+               className={`flex gap-x-8 ${mobileWidth ? "text-xs" : "text-lg"}`}
             >
+               {!mobileWidth && (
+                  <img
+                     src={palmLeafPlates}
+                     alt="Palm leaf plates"
+                     className="w-fit h-fit"
+                  />
+               )}
                <span>
                   <p>
                      With something this <b>beautiful</b> and this <b>strong</b>
@@ -177,7 +203,7 @@ export default function Home() {
             </div>
          </article>
 
-         <article className={`${mobileWidth ? "text-xs" : "text-sm"}`}>
+         <article className={`${mobileWidth ? "text-xs" : "text-lg"}`}>
             <p>
                <b>The cost:</b> Eco-Gecko biodegradable and compostable
                tableware is not only natural and stylish, but they are also{" "}
@@ -192,11 +218,15 @@ export default function Home() {
             </p>
          </article>
 
-         <img src={woodenKsf} alt="Wooden cutlery" className="" />
+         {mobileWidth && (
+            <img src={woodenKsf} alt="Wooden cutlery" className="" />
+         )}
 
          <article>
             <div
-               className={`flex gap-x-8 ${mobileWidth ? "text-xs" : "text-sm"}`}
+               className={`flex gap-x-8 ${
+                  mobileWidth ? "text-xs" : "text-lg w-11/12"
+               }`}
             >
                <span>
                   <p>
@@ -240,10 +270,18 @@ export default function Home() {
                      to learn how Eco-Gecko can personalize our products!
                   </p>
                </span>
+
+               {!mobileWidth && (
+                  <img
+                     src={woodenKsf}
+                     alt="Wooden cutlery"
+                     className="h-full"
+                  />
+               )}
             </div>
          </article>
 
-         <article className={`${mobileWidth ? "text-xs" : "text-sm"}`}>
+         <article className={`${mobileWidth ? "text-xs" : "text-lg"}`}>
             <p>
                <b>The info:</b> If you have any questions about Eco-Gecko
                biodegradable and compostable wooden cutlery or our other

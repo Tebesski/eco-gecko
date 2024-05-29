@@ -33,13 +33,14 @@ export default function KitchenwareTemplate({
                      <img
                         src={headerImg}
                         alt={headerImg}
-                        style={{
-                           maxWidth: mobileWidth ? "" : "765px",
-                           maxHeight: mobileWidth ? "" : "192px",
-                        }}
+                        className={`${!mobileWidth && "w-3/4 h-fit"}`}
                      />
 
-                     <span className="flex flex-col gap-y-2 items-center">
+                     <span
+                        className={`${
+                           !mobileWidth && "w-3/4"
+                        } flex flex-col gap-y-2 items-center`}
+                     >
                         <Title>{title}</Title>
                         <span
                            className={`flex gap-x-3 font-extrabold items-center ${
@@ -74,8 +75,8 @@ export default function KitchenwareTemplate({
                </article>
             </div>
 
-            {mobileWidth ? null : (
-               <FSC addStyles="" topVal={"top-0"} leftVal={"left-3/4"} />
+            {!mobileWidth && (
+               <FSC addStyles="" topVal={"top-0"} leftVal={"left-[76%]"} />
             )}
          </section>
 

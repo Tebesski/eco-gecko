@@ -125,7 +125,7 @@ export default function Listing({
          />
          <span
             className={`${
-               mobileWidth ? "text-sm" : "text-xl"
+               mobileWidth ? "text-sm" : "text-2xl"
             } font-extrabold text-green-main`}
          >
             {title.element}

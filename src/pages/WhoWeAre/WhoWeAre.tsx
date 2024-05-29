@@ -1,8 +1,8 @@
-import fsc from "../../../assets/fsc.png"
 import gecko from "../../../assets/gecko.png"
 import logo from "../../../assets/logo.png"
 import { v4 as uuidv4 } from "uuid"
 import useWindowSize from "../../hooks/useWindowSize"
+import FSC from "../../components/FSC"
 
 export default function WhoWeAre() {
    const mobileWidth = !useWindowSize(450)
@@ -50,7 +50,7 @@ export default function WhoWeAre() {
       </p>,
    ]
 
-   const items = mobileTexts
+   const items = mobileWidth
       ? mobileTexts
       : [
            <p>
@@ -103,10 +103,10 @@ export default function WhoWeAre() {
       <section className="flex gap-x-3 ml-3">
          <div
             className={`text-sm flex flex-col gap-y-4 ${
-               mobileWidth ? "w-full" : "w-2/3"
+               mobileWidth ? "w-full" : "w-3/5"
             }`}
          >
-            <span className={`${mobileWidth ? "text-center" : ""}`}>
+            <span className={`${mobileWidth ? "text-center" : "text-lg"}`}>
                <p>
                   You may be wondering why a gecko would be used as a symbol for
                   ecologically friendly products.
@@ -120,7 +120,7 @@ export default function WhoWeAre() {
 
             <div
                className={`grid grid-cols-2 grid-rows-5 gap-4 w-full ${
-                  mobileWidth ? "mt-[-50px]" : ""
+                  mobileWidth ? "mt-[-50px]" : "mt-10"
                }`}
             >
                <div className="flex items-center justify-center relative">
@@ -130,14 +130,14 @@ export default function WhoWeAre() {
                      className={`transform ${
                         mobileWidth ? "scale-50" : "scale-75"
                      } absolute ${
-                        mobileWidth ? "left-[-10px] top-10" : "left-12"
+                        mobileWidth ? "left-[-10px] top-10" : "left-36 top-6"
                      }`}
                   />
                   <h1
                      className={`${
                         mobileWidth
                            ? "text-base absolute top-20 right-8"
-                           : "text-2xl"
+                           : "text-2xl absolute left-64 top-16"
                      } font-semibold text-green-main`}
                   >
                      us
@@ -153,15 +153,15 @@ export default function WhoWeAre() {
                      src={gecko}
                      alt="Gecko"
                      className={`absolute ${
-                        mobileWidth ? "top-14 right-5" : "left-14 bottom-12"
+                        mobileWidth ? "top-14 right-5" : "left-40 top-12"
                      } transform rotate-[-18deg]`}
                   />
                   <h1
                      className={`${
-                        mobileWidth ? "text-3xl" : "text-2xl"
-                     } font-semibold text-green-light ${
-                        mobileWidth ? "absolute top-24 left-14" : ""
-                     }`}
+                        mobileWidth
+                           ? "text-3xl top-24 left-14"
+                           : "text-2xl left-52 top-20 w-32"
+                     } absolute font-semibold text-green-light`}
                   >
                      {mobileWidth ? "gecko" : "the gecko"}
                   </h1>
@@ -173,8 +173,8 @@ export default function WhoWeAre() {
                         index % 2 === 0
                            ? "bg-green-main text-white"
                            : "bg-green-light text-graphite"
-                     }  rounded-lg leading-3 text-xxs font-semibold ${
-                        mobileWidth ? "text-xs" : "text-sm"
+                     }  rounded-lg font-semibold ${
+                        mobileWidth ? "text-xs leading-3" : "text-sm"
                      }`}
                   >
                      {item}
@@ -183,25 +183,7 @@ export default function WhoWeAre() {
             </div>
          </div>
 
-         {mobileWidth ? null : (
-            <>
-               <div className="border-l-2 border-l-gray h-auto border-opacity-100"></div>
-
-               <div className="flex flex-col text-xxs">
-                  <img src={fsc} alt="FSC" width={100} height={100} />
-                  <p>For sales inqiries, please</p>
-                  <p>contact us at:</p>
-                  <a
-                     href="mailto:sales@eco-gecko.com"
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="text-green-main px-1 font-semibold mt-1 underline hover:no-underline hover:bg-green-main hover:text-white transition-colors duration-200 w-fit"
-                  >
-                     sales@eco-gecko.com
-                  </a>
-               </div>
-            </>
-         )}
+         {!mobileWidth && <FSC topVal={"top-34"} leftVal={"left-[68%]"} />}
       </section>
    )
 }

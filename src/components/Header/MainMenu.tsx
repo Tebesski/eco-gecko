@@ -99,7 +99,7 @@ export default function MainMenu() {
                {drawer}
             </nav>
          ) : (
-            <nav className="z-20 w-full items-center justify-between flex font-semibold text-lg gap-x-6 sticky top-0 bg-white rounded-b-xl">
+            <nav className="z-20 w-full items-center justify-between flex font-semibold text-xl gap-x-6 sticky top-0 bg-white rounded-b-xl">
                {navLinks.map(({ to, text }) => (
                   <NavLink
                      key={uuidv4()}
