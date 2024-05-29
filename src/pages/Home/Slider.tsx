@@ -40,21 +40,19 @@ export default function Slider() {
    function Mobile() {
       return (
          <div className="flex flex-col w-full h-full">
-            <figure className="flex-1 flex">
+            <figure className="relative w-full h-[104px] overflow-hidden">
                <div className="pb-1"></div>
-               {images.map((img, idx) => {
-                  if (currentImg === idx)
-                     return (
-                        <img
-                           key={uuidv4()}
-                           src={img}
-                           alt="Slider"
-                           className="max-h-[104px] min-h-[104px]"
-                        />
-                     )
-               })}
+               {images.map((img, index) => (
+                  <img
+                     key={index}
+                     src={img}
+                     alt="Slider"
+                     className={`absolute top-0 left-0 w-full h-full object-cover transition-all duration-1000 ${
+                        currentImg === index ? "opacity-100" : "opacity-0"
+                     }`}
+                  />
+               ))}
             </figure>
-
             <div className="bg-gray px-2 py-2 text-off-white text-xxs gap-y-2 flex flex-col">
                <div className="flex gap-x-1 items-center justify-between">
                   {currentText ? (
@@ -93,10 +91,10 @@ export default function Slider() {
             <div className="pb-1"></div>
             {images.map((img, index) => (
                <img
-                  key={uuidv4()}
+                  key={index}
                   src={img}
                   alt="Slider"
-                  className={`absolute top-0 left-0 w-full h-full object-cover transition-all duration-500 ease-in-out transform ${
+                  className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-1000 ${
                      currentImg === index ? "opacity-100" : "opacity-0"
                   }`}
                />

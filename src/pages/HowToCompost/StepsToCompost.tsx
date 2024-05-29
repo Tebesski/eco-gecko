@@ -25,14 +25,14 @@ export default function StepsToCompost() {
          <QA
             question="Is this going to be smelly?"
             answer={
-               <span className="flex flex-col relative">
+               <span className="flex flex-col">
                   <p>
                      <strong>Not if you do it right…</strong>
+                     &nbsp; &nbsp;
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   </p>
                   <br />
-                  <a className="underline self-end text-green-main cursor-pointer absolute left-[168px] top-1">
-                     more
-                  </a>
+                  <p className="underline self-end text-green-main">more</p>
                </span>
             }
             onClick={() =>

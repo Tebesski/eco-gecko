@@ -86,12 +86,13 @@ export default function MainMenu() {
    return (
       <>
          {mobileWidth ? (
-            <nav className="fixed top-2 right-2 z-50">
+            <nav className="fixed top-[-8px] right-[-8px] z-50">
                <IconButton onClick={handleDrawerToggle} className="bg-white">
                   <MenuIcon
                      sx={{
                         fontSize: 40,
                         color: "green",
+                        backgroundColor: "white",
                      }}
                   />
                </IconButton>
