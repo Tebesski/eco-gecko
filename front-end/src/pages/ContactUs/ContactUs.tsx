@@ -15,6 +15,7 @@ import {
 import { usePopup } from "../../context/popupContext"
 
 export default function ContactUs() {
+   const [formSubmitted, setFormSubmitted] = useState(false)
    const mobileWidth = !useWindowSize(450)
    const [open, setOpen] = useState(false)
    const [loading, setLoading] = useState(false)
@@ -117,10 +118,7 @@ export default function ContactUs() {
             .then((data) => {
                console.log(data)
                setLoading(false)
-               openPopup(
-                  "Form submitted successfully!",
-                  <p>We will get back to you soon :)</p>
-               )
+               setFormSubmitted(true) // Set formSubmitted to true on successful submission
             })
             .catch((error) => {
                console.error("Error:", error)
@@ -143,114 +141,134 @@ export default function ContactUs() {
       <section className={`flex gap-x-3 ${mobileWidth ? "mt-24" : ""}`}>
          {loading && (
             <Backdrop open={loading} style={{ color: "#fff", zIndex: 1500 }}>
-               <CircularProgress color="inherit" />
+               <div className="flex flex-col gap-y-4 justify-center items-center">
+                  <CircularProgress color="inherit" />
+                  <p className="text-lg">
+                     Please, kindly wait. It should take no more than 15 seconds
+                     for our server to process your message :)
+                  </p>
+               </div>
             </Backdrop>
          )}
-         <div className="w-full">
-            <Title centered={false} addStyles="mb-2">
-               Contact Us
-            </Title>
 
-            <div className="flex">
-               <form
-                  ref={formRef}
-                  className={`bg-green-main-30 rounded-lg ${
-                     mobileWidth ? "w-full mb-56" : "w-1/2"
-                  } p-6 flex flex-col items-start`}
-                  onSubmit={handleSubmit}
-               >
-                  <input
-                     className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
-                     type="text"
-                     name="name"
-                     placeholder="Name"
-                     value={form.name}
-                     onChange={handleChange}
-                     onBlur={() =>
-                        setTouched((prev) => ({ ...prev, name: true }))
-                     }
-                  />
-
-                  <input
-                     className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
-                     type="tel"
-                     name="contact"
-                     placeholder="Contact No."
-                     value={form.contact}
-                     onChange={handleChange}
-                     onBlur={() =>
-                        setTouched((prev) => ({ ...prev, contact: true }))
-                     }
-                  />
-
-                  <input
-                     className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
-                     type="email"
-                     name="email"
-                     placeholder="Email"
-                     value={form.email}
-                     onChange={handleChange}
-                     onBlur={() =>
-                        setTouched((prev) => ({ ...prev, email: true }))
-                     }
-                  />
-
-                  <textarea
-                     className="bg-white rounded-lg mb-2 placeholder-green-main p-2 text-sm font-medium w-full resize-none h-32"
-                     name="comments"
-                     placeholder="Comments (optional)"
-                     value={form.comments}
-                     onChange={handleChange}
-                  />
-
-                  <button
-                     className="bg-green-main text-off-white font-extrabold rounded-lg self-end px-8 py-2 hover:bg-white hover:text-green-main transition-colors duration-75"
-                     type="submit"
-                  >
-                     Submit
-                  </button>
-               </form>
-
-               {mobileWidth ? null : (
-                  <div
-                     className="text-sm flex flex-col gap-y-8 mt-9 ml-8"
-                     style={{
-                        color: "red",
-                     }}
-                  >
-                     <p
-                        style={{
-                           minHeight: "20px",
-                           transition: "opacity 0.3s",
-                           opacity: touched.name ? 1 : 0,
-                        }}
-                     >
-                        {errors.name}
-                     </p>
-                     <p
-                        style={{
-                           minHeight: "20px",
-                           transition: "opacity 0.3s",
-                           opacity: touched.contact ? 1 : 0,
-                        }}
-                     >
-                        {errors.contact}
-                     </p>
-                     <p
-                        style={{
-                           minHeight: "20px",
-                           transition: "opacity 0.3s",
-                           opacity: touched.email ? 1 : 0,
-                        }}
-                     >
-                        {errors.email}
-                     </p>
-                  </div>
-               )}
+         {formSubmitted ? (
+            <div>
+               <Title centered={false} addStyles="mb-2">
+                  Thank You for Contacting Us
+               </Title>
+               <p>
+                  Your information was sent successfully. We will get back to
+                  you shortly.
+               </p>
             </div>
-         </div>
+         ) : (
+            <div className="w-full">
+               <Title centered={false} addStyles="mb-2">
+                  Contact Us
+               </Title>
 
-         {mobileWidth ? null : <FSC topVal={"top-34"} leftVal={"left-[70%]"} />}
+               <div className="flex">
+                  <form
+                     ref={formRef}
+                     className={`bg-green-main-30 rounded-lg ${
+                        mobileWidth ? "w-full mb-56" : "w-1/2"
+                     } p-6 flex flex-col items-start`}
+                     onSubmit={handleSubmit}
+                  >
+                     <input
+                        className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        value={form.name}
+                        onChange={handleChange}
+                        onBlur={() =>
+                           setTouched((prev) => ({ ...prev, name: true }))
+                        }
+                     />
+
+                     <input
+                        className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
+                        type="tel"
+                        name="contact"
+                        placeholder="Contact No."
+                        value={form.contact}
+                        onChange={handleChange}
+                        onBlur={() =>
+                           setTouched((prev) => ({ ...prev, contact: true }))
+                        }
+                     />
+
+                     <input
+                        className="bg-white rounded-lg mb-2 placeholder-green-main p-3 text-sm font-semibold w-full"
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        value={form.email}
+                        onChange={handleChange}
+                        onBlur={() =>
+                           setTouched((prev) => ({ ...prev, email: true }))
+                        }
+                     />
+
+                     <textarea
+                        className="bg-white rounded-lg mb-2 placeholder-green-main p-2 text-sm font-medium w-full resize-none h-32"
+                        name="comments"
+                        placeholder="Comments (optional)"
+                        value={form.comments}
+                        onChange={handleChange}
+                     />
+
+                     <button
+                        className="bg-green-main text-off-white font-extrabold rounded-lg self-end px-8 py-2 hover:bg-white hover:text-green-main transition-colors duration-75"
+                        type="submit"
+                     >
+                        Submit
+                     </button>
+                  </form>
+
+                  {mobileWidth ? null : (
+                     <div
+                        className="text-sm flex flex-col gap-y-8 mt-9 ml-8"
+                        style={{
+                           color: "red",
+                        }}
+                     >
+                        <p
+                           style={{
+                              minHeight: "20px",
+                              transition: "opacity 0.3s",
+                              opacity: touched.name ? 1 : 0,
+                           }}
+                        >
+                           {errors.name}
+                        </p>
+                        <p
+                           style={{
+                              minHeight: "20px",
+                              transition: "opacity 0.3s",
+                              opacity: touched.contact ? 1 : 0,
+                           }}
+                        >
+                           {errors.contact}
+                        </p>
+                        <p
+                           style={{
+                              minHeight: "20px",
+                              transition: "opacity 0.3s",
+                              opacity: touched.email ? 1 : 0,
+                           }}
+                        >
+                           {errors.email}
+                        </p>
+                     </div>
+                  )}
+               </div>
+            </div>
+         )}
+         {!mobileWidth && !formSubmitted && (
+            <FSC topVal={"top-34"} leftVal={"left-[70%]"} />
+         )}
 
          {mobileWidth && (
             <Dialog open={open} onClose={handleClose}>

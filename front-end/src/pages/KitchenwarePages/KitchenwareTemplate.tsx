@@ -76,7 +76,9 @@ export default function KitchenwareTemplate({
             </div>
 
             {!mobileWidth && (
-               <FSC addStyles="" topVal={"top-0"} leftVal={"left-[76%]"} />
+               <div className="hidden xl:block">
+                  <FSC addStyles="" topVal={"top-0"} leftVal={"left-[76%]"} />
+               </div>
             )}
          </section>
 

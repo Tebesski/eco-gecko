@@ -187,7 +187,7 @@ export default function Listing({
                   mobileWidth
                      ? "px-2 py-1 text-sm mt-2"
                      : "px-3 py-2 ml-36 mt-4"
-               }`}
+               } min-w-36`}
                onMouseDown={handleButtonAnimation}
                onMouseUp={() => setIsButtonClicked(false)}
                onMouseLeave={() => setIsButtonClicked(false)}
