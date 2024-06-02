@@ -48,7 +48,7 @@ export default function Listing({
                   onMouseLeave={() => setIsButtonClicked(false)}
                   onClick={handleButtonClick}
                >
-                  Buy now
+                  Where to buy
                </button>
             </div>
          )
@@ -74,7 +74,7 @@ export default function Listing({
                      onMouseLeave={() => setIsButtonClicked(false)}
                      onClick={handleButtonClick}
                   >
-                     Buy now
+                     Where to buy
                   </button>
                </div>
             </div>
@@ -110,64 +110,68 @@ export default function Listing({
 
    return (
       <div
-         className={`flex flex-col ${
+         className={`flex flex-col h-full justify-between ${
             gridCount && gridCount < 2 ? "items-center" : "items-start"
          } gap-y-1 relative`}
       >
-         <img
-            src={img}
-            alt={img}
-            style={{
-               width: mobileWidth ? "100px" : "200px",
-               height: mobileWidth ? "100px" : "200px",
-               objectFit: "contain",
-            }}
-         />
-         <span
-            className={`${
-               mobileWidth ? "text-sm" : "text-2xl"
-            } font-extrabold text-green-main`}
-         >
-            {title.element}
-         </span>
-         <span className="text-xs">
-            {mobileWidth && (
-               <p>
-                  Available in{" "}
-                  {Array.isArray(info)
-                     ? `${(info as Element[])
-                          .map((item) =>
-                             Array.isArray(item.element)
-                                ? item.element.length
-                                : 1
-                          )
-                          .reduce((a, b) => a + b, 0)} sizes`
-                     : Array.isArray(info.element)
-                     ? `${(info.element as ReactNode[]).length} sizes`
-                     : "1 size"}
-               </p>
-            )}
-            {!mobileWidth && subtitle.element}
-         </span>
-
-         {mobileWidth ? (
-            <p
-               className="text-green-main underline text-xs font-bold cursor-pointer"
-               onClick={() => handleOpenDetails(listMode)}
+         <div>
+            <img
+               src={img}
+               alt={img}
+               style={{
+                  maxWidth: mobileWidth ? "100px" : "100%",
+                  maxHeight: mobileWidth ? "100px" : "200px",
+                  minWidth: mobileWidth ? "100px" : "200px",
+                  minHeight: mobileWidth ? "100px" : "200px",
+                  objectFit: "contain",
+               }}
+            />
+            <span
+               className={`${
+                  mobileWidth ? "text-sm" : "text-2xl"
+               } font-extrabold text-green-main`}
             >
-               Details and order
-            </p>
-         ) : listMode ? (
-            <div>
-               <ul className="flex flex-col gap-y-2 list-inside ml-1">
-                  {renderInfo()}
-               </ul>
-            </div>
-         ) : (
-            <span className="text-xs">
-               {Array.isArray(info) ? info[0].element : info.element}
+               {title.element}
             </span>
-         )}
+            <span className="text-xs">
+               {mobileWidth && (
+                  <p>
+                     Available in{" "}
+                     {Array.isArray(info)
+                        ? `${(info as Element[])
+                             .map((item) =>
+                                Array.isArray(item.element)
+                                   ? item.element.length
+                                   : 1
+                             )
+                             .reduce((a, b) => a + b, 0)} sizes`
+                        : Array.isArray(info.element)
+                        ? `${(info.element as ReactNode[]).length} sizes`
+                        : "1 size"}
+                  </p>
+               )}
+               {!mobileWidth && subtitle.element}
+            </span>
+
+            {mobileWidth ? (
+               <p
+                  className="text-green-main underline text-xs font-bold cursor-pointer"
+                  onClick={() => handleOpenDetails(listMode)}
+               >
+                  Details and order
+               </p>
+            ) : listMode ? (
+               <div>
+                  <ul className="flex flex-col gap-y-2 list-inside ml-1">
+                     {renderInfo()}
+                  </ul>
+               </div>
+            ) : (
+               <span className="text-xs">
+                  {Array.isArray(info) ? info[0].element : info.element}
+               </span>
+            )}
+         </div>
 
          {!mobileWidth && (
             <button
@@ -189,7 +193,7 @@ export default function Listing({
                onMouseLeave={() => setIsButtonClicked(false)}
                onClick={handleButtonClick}
             >
-               Buy now
+               Where to buy
             </button>
          )}
       </div>

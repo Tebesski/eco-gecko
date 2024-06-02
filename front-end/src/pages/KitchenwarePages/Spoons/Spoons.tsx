@@ -76,7 +76,7 @@ export default function Spoons() {
          <KitchenwareTemplate
             headerImg={fskHeader}
             title={"Disposable Wooden Forks"}
-            gridCount={mobileWidth ? 1 : 3}
+            gridCount={mobileWidth ? 1 : 2}
             listingItems={listingItems}
          >
             <div className={`${mobileWidth && "ml-5"}`}>
@@ -87,54 +87,55 @@ export default function Spoons() {
             </div>
 
             <br />
-            <div className="flex gap-x-2">
-               <div
-                  className={`flex flex-col ${
-                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
-                  }`}
-               >
+            {!mobileWidth && (
+               <img
+                  src={img5}
+                  alt="Disposable wooden spoons"
+                  style={{
+                     float: "right",
+                     width: "25%",
+                     height: "25%",
+                     objectFit: "contain",
+                     marginLeft: "10px",
+                  }}
+               />
+            )}
+            <p>
+               The <b>natural beauty and strength</b> of birch wood make for
+               stylish, yet functional, disposable wooden spoons. So whether you
+               are planning an office party, an outdoor event, a dinner party,
+               or for daily use in your office, restaurant or for food sampling,
+               our biodegradable and compostable wooden spoons are the{" "}
+               <b>perfect utensil for your needs</b>. And since birch is a{" "}
+               <b>hardwood</b>, the edges are even <b>smoother</b> than other
+               wooden cutlery on the market, which makes them{" "}
+               <b>completely safe</b> for children to use. No toxins, no
+               chemicals, just high-quality disposable tableware… made from
+               natural and renewable resources.{" "}
+            </p>
+
+            <br />
+            <div className="flex">
+               <div className="flex flex-col gap-y-2">
                   <p>
-                     The <b>natural beauty and strength</b> of birch wood make
-                     for stylish, yet functional, disposable wooden spoons. So
-                     whether you are planning an office party, an outdoor event,
-                     a dinner party, or for daily use in your office, restaurant
-                     or for food sampling, our biodegradable and compostable
-                     wooden spoons are the <b>perfect utensil for your needs</b>
-                     . And since birch is a <b>hardwood</b>, the edges are even{" "}
-                     <b>smoother</b> than other wooden cutlery on the market,
-                     which makes them <b>completely safe</b> for children to
-                     use. No toxins, no chemicals, just high-quality disposable
-                     tableware… made from natural and renewable resources.{" "}
+                     We all need to be aware of the impact our choices have on
+                     the planet. You’ll be happy to know that the FSC® (Forest
+                     Stewardship Council) recognizes and certifies that the
+                     methods of harvesting and re-planting are being{" "}
+                     <b>managed sustainably</b>. So let each one of us do our
+                     part by supporting the sustainable use of renewable
+                     resources and by choosing FSC-certified products. Going
+                     green has never been easier…{" "}
                   </p>
                   <br />
-                  <div className="flex">
-                     <div className="flex flex-col gap-y-2">
-                        <p>
-                           We all need to be aware of the impact our choices
-                           have on the planet. You’ll be happy to know that the
-                           FSC® (Forest Stewardship Council) recognizes and
-                           certifies that the methods of harvesting and
-                           re-planting are being <b>managed sustainably</b>. So
-                           let each one of us do our part by supporting the
-                           sustainable use of renewable resources and by
-                           choosing FSC-certified products. Going green has
-                           never been easier…{" "}
-                        </p>
-                        <br />
-                        <p>
-                           Our current line of 6 ½ inch, 4 ½ inch, and 3 ¾ inch
-                           disposable wooden spoons are all available in bulk
-                           packaging as well as 6 ½ inch wooden spoons in brown
-                           paper canisters. We also offer disposable wooden
-                           spoons with{" "}
-                           <b>customized logos, customized packaging</b>, in a
-                           wide <b>variety of shapes and sizes</b>.
-                        </p>
-                     </div>
-                     {!mobileWidth && (
-                        <img src={img5} alt="Disposable wooden spoons" />
-                     )}
-                  </div>
+                  <p>
+                     Our current line of 6 ½ inch, 4 ½ inch, and 3 ¾ inch
+                     disposable wooden spoons are all available in bulk
+                     packaging as well as 6 ½ inch wooden spoons in brown paper
+                     canisters. We also offer disposable wooden spoons with{" "}
+                     <b>customized logos, customized packaging</b>, in a wide{" "}
+                     <b>variety of shapes and sizes</b>.
+                  </p>
                   <p>
                      If you have any questions about Eco-gecko one-time-use palm
                      leaf plates, you can{" "}

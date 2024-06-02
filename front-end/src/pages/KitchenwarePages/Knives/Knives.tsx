@@ -65,6 +65,7 @@ export default function Knives() {
                knives could even cut steak. And unlike many PLA-based products,
                our wooden cutlery work well with hot or cold foods.
             </p>
+
             <br />
             <p className={`${mobileWidth && "text-sm"}`}>
                Wooden knives by Eco-gecko are made of birch wood in a process
@@ -76,45 +77,50 @@ export default function Knives() {
                you can compost them in your own home composter or drop them off
                at a commercial composting facility.
             </p>
-            <div className="flex gap-x-2">
-               <div
-                  className={`flex flex-col ${
-                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
-                  }`}
-               >
-                  {" "}
-                  <p>
-                     One more reason to feel good about our disposable wooden
-                     knives and cutlery is that the FSC® (Forest Stewardship
-                     Council) recognizes and certifies that the methods of
-                     harvesting and re-planting are being{" "}
-                     <b>managed sustainably</b>. So let each one of us do our
-                     part and support the sustainable use of renewable resources
-                     by choosing FS certified products. Going green has never
-                     been easier…
-                  </p>
-                  <p>
-                     Aside from our current stock of 6 ½ inch disposable wooden
-                     knives in bulk and in brown paper canisters, disposable
-                     wooden knives with{" "}
-                     <b>customized logos, customized packaging</b>, in a wide{" "}
-                     <b>variety of sizes</b> are also available.
-                  </p>
-                  <p>
-                     If you have any questions about Eco-gecko one-time-use palm
-                     leaf plates, you can{" "}
-                     <CustomLink href={"/faq"}>
-                        check out our FAQ page
-                     </CustomLink>
-                     , or get more information by{" "}
-                     <CustomLink href={"/contact-us"}>
-                        contacting our helpful staff{" "}
-                     </CustomLink>
-                     now.
-                  </p>
-               </div>
-               {!mobileWidth && <img src={img3} alt="Palm knives" />}{" "}
-            </div>
+
+            <br />
+            {!mobileWidth && (
+               <img
+                  src={img3}
+                  alt="Palm knives"
+                  style={{
+                     float: "right",
+                     width: "25%",
+                     height: "25%",
+                     objectFit: "contain",
+                     marginLeft: "10px",
+                  }}
+               />
+            )}
+            <p>
+               One more reason to feel good about our disposable wooden knives
+               and cutlery is that the FSC® (Forest Stewardship Council)
+               recognizes and certifies that the methods of harvesting and
+               re-planting are being <b>managed sustainably</b>. So let each one
+               of us do our part and support the sustainable use of renewable
+               resources by choosing FS certified products. Going green has
+               never been easier…
+            </p>
+
+            <br />
+            <p>
+               Aside from our current stock of 6 ½ inch disposable wooden knives
+               in bulk and in brown paper canisters, disposable wooden knives
+               with <b>customized logos, customized packaging</b>, in a wide{" "}
+               <b>variety of sizes</b> are also available.
+            </p>
+            <br />
+
+            <p>
+               If you have any questions about Eco-gecko one-time-use palm leaf
+               plates, you can{" "}
+               <CustomLink href={"/faq"}>check out our FAQ page</CustomLink>, or
+               get more information by{" "}
+               <CustomLink href={"/contact-us"}>
+                  contacting our helpful staff{" "}
+               </CustomLink>
+               now.
+            </p>
          </KitchenwareTemplate>
       </section>
    )

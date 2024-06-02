@@ -41,9 +41,9 @@ export default function WhereToBuy() {
    }
 
    return (
-      <section className="flex gap-x-3">
-         <div className="gap-y-3">
-            <Title addStyles="mt-4 mb-4">
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+         <div className="col-span-1 md:col-span-2">
+            <Title addStyles="mt-4 mb-4 sm:text-xl lg:text-3xl">
                Wholesale Distributors of Eco-Gecko Products
             </Title>
 
@@ -146,8 +146,11 @@ export default function WhereToBuy() {
                </tbody>
             </table>
          </div>
-
-         {mobileWidth ? null : <FSC topVal={"top-34"} leftVal={"left-[70%]"} />}
+         {!mobileWidth && (
+            <div className="col-span-1 hidden md:block">
+               <FSC topVal={"top-34"} leftVal={"left-[70%]"} />
+            </div>
+         )}
       </section>
    )
 }

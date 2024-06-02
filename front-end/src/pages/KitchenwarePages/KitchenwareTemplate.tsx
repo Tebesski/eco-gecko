@@ -82,7 +82,7 @@ export default function KitchenwareTemplate({
 
          <hr
             className={`border-b-1 ${
-               mobileWidth ? "mt-16 mb-8" : "mt-32 mb-16"
+               mobileWidth ? "mt-8 mb-8" : "mt-4 mb-16"
             } border-graphite`}
          />
 

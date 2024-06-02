@@ -71,7 +71,6 @@ export default function Forks() {
                </h4>
                {mobileWidth && <MobileArticleImg img={img4} />}
             </div>
-
             <br />
             <p className={`${mobileWidth && "text-sm"}`}>
                Eco-gecko disposable wooden forks are not only beautiful,they are
@@ -80,6 +79,19 @@ export default function Forks() {
                ease. And unlike many PLA-based products, our wooden forks work
                well with hot or cold foods.{" "}
             </p>
+            {!mobileWidth && (
+               <img
+                  src={img4}
+                  alt="Palm forks"
+                  style={{
+                     float: "right",
+                     width: "25%",
+                     height: "25%",
+                     objectFit: "contain",
+                     marginLeft: "10px",
+                  }}
+               />
+            )}
             <br />
             <p className={`${mobileWidth && "text-sm"}`}>
                Wooden forks by Eco-gecko are made of birch wood in a process
@@ -91,43 +103,34 @@ export default function Forks() {
                in your own home composter or drop them off at a commercial
                composting facility.{" "}
             </p>
-            <div className="flex gap-x-2">
-               <div
-                  className={`flex flex-col ${
-                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
-                  }`}
-               >
-                  {" "}
-                  <p>
-                     All of our disposable wooden cutlery are made from{" "}
-                     <b>FSC®-certified birch wood</b>. This means that the FSC
-                     (Forest Stewardship Council) recognizes and certifies that
-                     the methods of harvesting and re-planting are being{" "}
-                     <b>managed sustainably</b>. So you can feel good knowing
-                     that you are using renewable resources wisely.{" "}
-                  </p>
-                  <p>
-                     Our 6 ½ inch compostable wooden forks come in bulk
-                     packaging as well as in 100-packs in brown paper canisters.
-                     We also offer disposable wooden forks with{" "}
-                     <b>customized logos, customized packaging</b>, in a wide{" "}
-                     <b>variety of shapes and sizes</b>.{" "}
-                  </p>
-                  <p>
-                     If you have any questions about Eco-gecko one-time-use palm
-                     leaf plates, you can{" "}
-                     <CustomLink href={"/faq"}>
-                        check out our FAQ page
-                     </CustomLink>
-                     , or get more information by{" "}
-                     <CustomLink href={"/contact-us"}>
-                        contacting our helpful staff{" "}
-                     </CustomLink>
-                     now.
-                  </p>
-               </div>
-               {!mobileWidth && <img src={img4} alt="Palm forks" />}
-            </div>
+            <br />
+            <p>
+               All of our disposable wooden cutlery are made from{" "}
+               <b>FSC®-certified birch wood</b>. This means that the FSC (Forest
+               Stewardship Council) recognizes and certifies that the methods of
+               harvesting and re-planting are being <b>managed sustainably</b>.
+               So you can feel good knowing that you are using renewable
+               resources wisely.{" "}
+            </p>
+            <br />
+            <p>
+               Our 6 ½ inch compostable wooden forks come in bulk packaging as
+               well as in 100-packs in brown paper canisters. We also offer
+               disposable wooden forks with{" "}
+               <b>customized logos, customized packaging</b>, in a wide{" "}
+               <b>variety of shapes and sizes</b>.{" "}
+            </p>
+            <br />
+            <p>
+               If you have any questions about Eco-gecko one-time-use palm leaf
+               plates, you can{" "}
+               <CustomLink href={"/faq"}>check out our FAQ page</CustomLink>, or
+               get more information by{" "}
+               <CustomLink href={"/contact-us"}>
+                  contacting our helpful staff{" "}
+               </CustomLink>
+               now.
+            </p>
          </KitchenwareTemplate>
       </section>
    )

@@ -74,12 +74,14 @@ export default function Plates() {
          <KitchenwareTemplate
             headerImg={platesHeader}
             title={"Palm Leaf Plates"}
-            gridCount={2}
+            gridCount={mobileWidth ? 2 : 3}
             listingItems={listingItems}
          >
             <h4 className="font-extrabold">Disposable palm leaf plates</h4>
             {mobileWidth && <MobileArticleImg img={img4} />}
+
             <br />
+
             <p className={`${mobileWidth && "text-sm"}`}>
                Disposable palm leaf plates by Eco-Gecko are naturally beautiful
                dinnerware made from fallen palm leaves. These wooden plates are
@@ -92,53 +94,56 @@ export default function Plates() {
                ... So go ahead and load them up!
             </p>
             <br />
-            <div className="flex gap-x-2">
-               <div
-                  className={`flex flex-col ${
-                     mobileWidth ? "text-sm gap-y-1" : "gap-y-3"
-                  }`}
-               >
-                  <p>
-                     Our line of palm leaf tableware was designed to provide an{" "}
-                     <b>eco-friendly alternative</b> to the non-biodegrading
-                     disposable plates used for so many years in the food
-                     industry. It would be{" "}
-                     <b>hard to find anything more eco-friendly</b> than dinner
-                     plates and bowls made from fallen palm leaves which in the
-                     past <b>were often collected and burned</b>. So not only
-                     does using this natural by-product from areca palm trees
-                     stop the senseless burning of a useful product, but it also{" "}
-                     <b>
-                        serves as a biodegradable and compostable alternative to
-                        plastic and Styrofoam dinnerware.
-                     </b>
-                  </p>
-                  <br />
-                  <p>
-                     In addition to our palm leaf tableware, the boxes and
-                     cartons used to package our biodegradable and compostable
-                     cutlery, plates and bowls are made from{" "}
-                     <b>recycled paper products</b>. Geckos don’t leave
-                     footprints, and neither will you when you use wooden
-                     disposable cutlery by Eco-gecko.
-                  </p>
-                  <p>
-                     If you have any questions about Eco-gecko one-time-use palm
-                     leaf plates, you can{" "}
-                     <CustomLink href={"/faq"}>
-                        check out our FAQ page
-                     </CustomLink>
-                     , or get more information by{" "}
-                     <CustomLink href={"/contact-us"}>
-                        contacting our helpful staff{" "}
-                     </CustomLink>
-                     now.
-                  </p>
-               </div>
-               {mobileWidth ? null : (
-                  <img src={img4} alt="Palm leaf plates heart shaped" />
-               )}
-            </div>
+            <br />
+            {!mobileWidth && (
+               <img
+                  src={img4}
+                  alt="Palm leaf plates heart shaped"
+                  style={{
+                     float: "right",
+                     width: "25%",
+                     height: "25%",
+                     objectFit: "contain",
+                     marginLeft: "10px",
+                  }}
+               />
+            )}
+            <p>
+               Our line of palm leaf tableware was designed to provide an{" "}
+               <b>eco-friendly alternative</b> to the non-biodegrading
+               disposable plates used for so many years in the food industry. It
+               would be <b>hard to find anything more eco-friendly</b> than
+               dinner plates and bowls made from fallen palm leaves which in the
+               past <b>were often collected and burned</b>. So not only does
+               using this natural by-product from areca palm trees stop the
+               senseless burning of a useful product, but it also{" "}
+               <b>
+                  serves as a biodegradable and compostable alternative to
+                  plastic and Styrofoam dinnerware.
+               </b>
+            </p>
+            <br />
+
+            <p>
+               In addition to our palm leaf tableware, the boxes and cartons
+               used to package our biodegradable and compostable cutlery, plates
+               and bowls are made from <b>recycled paper products</b>. Geckos
+               don’t leave footprints, and neither will you when you use wooden
+               disposable cutlery by Eco-gecko.
+            </p>
+            <br />
+            <br />
+            <br />
+            <p>
+               If you have any questions about Eco-gecko one-time-use palm leaf
+               plates, you can{" "}
+               <CustomLink href={"/faq"}>check out our FAQ page</CustomLink>, or
+               get more information by{" "}
+               <CustomLink href={"/contact-us"}>
+                  contacting our helpful staff{" "}
+               </CustomLink>
+               now.
+            </p>
          </KitchenwareTemplate>
       </section>
    )

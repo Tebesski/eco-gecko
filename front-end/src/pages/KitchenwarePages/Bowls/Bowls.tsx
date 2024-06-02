@@ -71,59 +71,66 @@ export default function Bowls() {
          <KitchenwareTemplate
             headerImg={bowlsHeader}
             title={"Palm Leaf Bowls"}
-            gridCount={2}
+            gridCount={mobileWidth ? 2 : 3}
             listingItems={listingItems}
          >
             <h4 className="font-extrabold">Palm Leaf Bowls</h4>
             {mobileWidth && <MobileArticleImg img={img4} />}
+
             <br />
-            <div className="flex gap-x-2">
-               <div
-                  className={`flex flex-col ${
-                     mobileWidth ? "text-sm gap-y-2" : "gap-y-3"
-                  }`}
-               >
-                  <p>
-                     Beautiful, strong, and smart… Our line of palm leaf bowls
-                     is designed to provide an <b>eco-friendly alternative</b>{" "}
-                     to the non-biodegrading disposable bowls that are overused
-                     in the food industry. It would be{" "}
-                     <b>difficult to find anything more earth-friendly</b> than
-                     wooden bowls made from fallen palm leaves which in the past{" "}
-                     <b>were often discarded and burned</b>. So using this
-                     natural by-product from areca palm trees not only stops the
-                     senseless burning of a useful product, but it also{" "}
-                     <b>
-                        stands out as a stunningly gorgeous piece of disposable
-                        dinnerware that is second to none
-                     </b>
-                     . So if you are planning a wedding or a catered event that
-                     requires beautiful yet sturdy dinnerware, look no further.
-                     You won’t be disappointed with Eco-gecko palm leaf bowls!
-                  </p>
-                  <br />
-                  <p>
-                     And reducing your carbon footprint doesn’t stop here… Even
-                     the boxes and cartons used to package our wooden bowls are
-                     made from <b>recycled paper products</b>. Geckos don’t
-                     leave footprints, and neither will you when you use
-                     disposable palm leaf bowls by Eco-gecko.
-                  </p>
-                  <p>
-                     If you have any questions about Eco-gecko one-time-use palm
-                     leaf plates, you can{" "}
-                     <CustomLink href={"/faq"}>
-                        check out our FAQ page
-                     </CustomLink>
-                     , or get more information by{" "}
-                     <CustomLink href={"/contact-us"}>
-                        contacting our helpful staff{" "}
-                     </CustomLink>
-                     now.
-                  </p>
-               </div>
-               {!mobileWidth && <img src={img4} alt="Palm leaf bowls" />}
-            </div>
+
+            <p>
+               Beautiful, strong, and smart… Our line of palm leaf bowls is
+               designed to provide an <b>eco-friendly alternative</b> to the
+               non-biodegrading disposable bowls that are overused in the food
+               industry. It would be{" "}
+               <b>difficult to find anything more earth-friendly</b> than wooden
+               bowls made from fallen palm leaves which in the past{" "}
+               <b>were often discarded and burned</b>. So using this natural
+               by-product from areca palm trees not only stops the senseless
+               burning of a useful product, but it also{" "}
+               <b>
+                  stands out as a stunningly gorgeous piece of disposable
+                  dinnerware that is second to none
+               </b>
+               . So if you are planning a wedding or a catered event that
+               requires beautiful yet sturdy dinnerware, look no further. You
+               won’t be disappointed with Eco-gecko palm leaf bowls!
+            </p>
+            {!mobileWidth && (
+               <img
+                  src={img4}
+                  alt="Palm leaf bowls"
+                  style={{
+                     float: "right",
+                     width: "25%",
+                     height: "25%",
+                     objectFit: "contain",
+                     marginLeft: "10px",
+                  }}
+               />
+            )}
+            <br />
+            <br />
+            <p>
+               And reducing your carbon footprint doesn’t stop here… Even the
+               boxes and cartons used to package our wooden bowls are made from{" "}
+               <b>recycled paper products</b>. Geckos don’t leave footprints,
+               and neither will you when you use disposable palm leaf bowls by
+               Eco-gecko.
+            </p>
+            <br />
+            <br />
+            <p>
+               If you have any questions about Eco-gecko one-time-use palm leaf
+               plates, you can{" "}
+               <CustomLink href={"/faq"}>check out our FAQ page</CustomLink>, or
+               get more information by{" "}
+               <CustomLink href={"/contact-us"}>
+                  contacting our helpful staff{" "}
+               </CustomLink>
+               now.
+            </p>
          </KitchenwareTemplate>
       </section>
    )

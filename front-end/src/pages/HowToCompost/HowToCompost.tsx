@@ -333,30 +333,35 @@ export default function HowToCompost() {
                         Here are 10 Easy Steps to Home Composting
                      </h6>
                      <div className="bg-green-main bg-opacity-20 rounded-lg p-3 flex flex-col gap-y-2">
-                        <ol className="ml-7 text-sm">
+                        <ol className="ml-7 text-base">
                            <li>
                               1) Get a garbage pail or container that you keep
                               on the counter or under the sink.
                            </li>
+                           <br />
                            <li>
                               2) Post the list of compost matter in plain view
                               so that everyone in the home is clear on what is
                               and isn’t compostable material.
                            </li>
+                           <br />
                            <li>
                               3) Purchase a compost bin from your municipality
                               or gardening supplies store, or if possible, make
                               one yourself (see links below).
                            </li>
+                           <br />
                            <li>
                               4) Using a shovel, prepare an area for your
                               composter by turning the soil, preferably in a
                               sunny, well-drained area.
                            </li>
+                           <br />
                            <li>
                               5) Cover the bottom of the area with a 2 to 3-inch
                               layer (5 to 6 cm) of small, dry branches.
                            </li>
+                           <br />
                            <li>
                               6) On these branches, place a layer of dry leaves
                               (the disposable palm leaf plates and bowls can
@@ -365,14 +370,15 @@ export default function HowToCompost() {
                               drainage, thus helping to prevent the bottom from
                               getting waterlogged.
                            </li>
+                           <br />
                            <li>
                               7) Place 2 parts of the carbon-rich matter (brown
                               or dry matter, including the disposable wooden
                               cutlery and palm leaf plates) to 1 part of the
                               nitrogen-rich matter (green or wet matter).
                            </li>
+                           <br />
                            <li>
-                              {" "}
                               8) Add some finished compost from your last
                               composting batch, or add gardening soil on top of
                               your pile to keep the flies out of the compost
@@ -380,10 +386,12 @@ export default function HowToCompost() {
                               bacteria, similar to adding starter to a batch of
                               yogurt.
                            </li>
+                           <br />
                            <li>
                               9) You should aerate the compost pile using an
                               aerator or a pitch fork once a week.
                            </li>
+                           <br />
                            <li>
                               10) Check the degree of humidity of your compost
                               pile from time to time. If it is dry, you can add

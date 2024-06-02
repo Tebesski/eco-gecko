@@ -119,49 +119,42 @@ export default function WhoWeAre() {
             </span>
 
             <div
-               className={`grid grid-cols-2 grid-rows-5 gap-4 w-full ${
-                  mobileWidth ? "mt-[-50px]" : "mt-10"
+               className={`items-center grid grid-cols-2 grid-rows-6 gap-4 w-full ${
+                  mobileWidth && "mt-[-50px]"
                }`}
             >
-               <div className="flex items-center justify-center relative">
+               <div
+                  className={`flex items-center justify-center relative mb-[-50px]`}
+               >
                   <img
                      src={logo}
                      alt="Logo"
                      className={`transform ${
                         mobileWidth ? "scale-50" : "scale-75"
-                     } absolute ${
-                        mobileWidth ? "left-[-10px] top-10" : "left-36 top-6"
                      }`}
                   />
                   <h1
                      className={`${
-                        mobileWidth
-                           ? "text-base absolute top-20 right-8"
-                           : "text-2xl absolute left-64 top-16"
+                        mobileWidth ? "text-base" : "text-2xl"
                      } font-semibold text-green-main`}
                   >
                      us
                   </h1>
                </div>
-
                <div
-                  className={`flex items-center justify-center relative ${
-                     mobileWidth ? "transform scale-50" : "h-20 w-20"
-                  }`}
+                  className={`flex items-center justify-center relative gap-x-4 ${
+                     mobileWidth ? "transform scale-50" : "h-24 w-24"
+                  } justify-self-center mb-[-50px]`}
                >
                   <img
                      src={gecko}
                      alt="Gecko"
-                     className={`absolute ${
-                        mobileWidth ? "top-14 right-5" : "left-40 top-12"
-                     } transform rotate-[-18deg]`}
+                     className={`transform rotate-[-170deg]`}
                   />
                   <h1
                      className={`${
-                        mobileWidth
-                           ? "text-3xl top-24 left-14"
-                           : "text-2xl left-52 top-20 w-32"
-                     } absolute font-semibold text-green-light`}
+                        mobileWidth ? "text-3xl" : "text-2xl"
+                     } font-semibold text-green-light whitespace-nowrap`}
                   >
                      {mobileWidth ? "gecko" : "the gecko"}
                   </h1>
@@ -169,7 +162,7 @@ export default function WhoWeAre() {
                {items.map((item, index) => (
                   <div
                      key={uuidv4()}
-                     className={`p-3 max-h-32 overflow-clip ${
+                     className={`p-3 h-32 overflow-clip overflow-y-scroll ${
                         index % 2 === 0
                            ? "bg-green-main text-white"
                            : "bg-green-light text-graphite"

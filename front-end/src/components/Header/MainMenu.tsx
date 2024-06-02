@@ -27,7 +27,7 @@ export default function MainMenu() {
    const navLinks = [
       { to: "/home", text: "Home" },
       { to: "/about", text: `${mobileWidth ? "Who we are" : "Who We Are"}` },
-      { to: "/customization", text: "Customization" },
+      { to: "/home", text: "Customization" },
       {
          to: "/compost",
          text: `${mobileWidth ? "How to compost" : "How To Compost"}`,
@@ -99,7 +99,7 @@ export default function MainMenu() {
                {drawer}
             </nav>
          ) : (
-            <nav className="z-20 w-full items-center justify-between flex font-semibold text-xl gap-x-6 sticky top-0 bg-white rounded-b-xl">
+            <nav className="z-20 w-full text-center items-center justify-between flex font-semibold text-xl gap-x-6 sticky top-0 bg-white rounded-b-xl">
                {navLinks.map(({ to, text }) => (
                   <NavLink
                      key={uuidv4()}
