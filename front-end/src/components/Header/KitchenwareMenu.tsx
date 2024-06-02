@@ -17,9 +17,7 @@ export default function KitchenwareMenu() {
    return (
       mobileWidth && (
          <nav
-            className={`flex font-semibold ${
-               !mobileWidth ? "text-xs" : "text-xl"
-            } gap-x-2 justify-between items-center text-green-main w-3/4 ml-[-8px]`}
+            className={`flex font-semibold 2xl:text-xl xl:text-base md:text-sm gap-x-2 justify-between items-center text-green-main w-3/4 ml-[-8px]`}
          >
             {navLinks.map(({ to, text }, index) => (
                <React.Fragment key={uuidv4()}>
