@@ -106,42 +106,34 @@ export default function ContactUs() {
    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       if (validateForm()) {
-         if (!formRef.current) return
          setLoading(true)
-         emailjs
-            .sendForm(
-               import.meta.env.VITE_APP_SERVICE_ID,
-               import.meta.env.VITE_APP_TEMPLATE_ID,
-               formRef.current,
-               {
-                  publicKey: import.meta.env.VITE_APP_PUBLIC_KEY,
-               }
-            )
-            .then(
-               () => {
-                  setForm({
-                     name: "",
-                     contact: "",
-                     email: "",
-                     comments: "",
-                  })
-                  setLoading(false)
-                  openPopup(
-                     "Form submitted successfully!",
-                     <p>We will get back to you soon :)</p>
-                  )
-               },
-               () => {
-                  openPopup(
-                     "Sorry...",
-                     <div>
-                        <p>Something went wrong, the message was not sent.</p>
-                        <br />
-                        <p>Try again later, please!</p>
-                     </div>
-                  )
-               }
-            )
+         fetch("http://localhost:3000/send-email", {
+            method: "POST",
+            headers: {
+               "Content-Type": "application/json",
+            },
+            body: JSON.stringify(form),
+         })
+            .then((response) => response.json())
+            .then((data) => {
+               console.log(data)
+               setLoading(false)
+               openPopup(
+                  "Form submitted successfully!",
+                  <p>We will get back to you soon :)</p>
+               )
+            })
+            .catch((error) => {
+               console.error("Error:", error)
+               openPopup(
+                  "Sorry...",
+                  <div>
+                     <p>Something went wrong, the message was not sent.</p>
+                     <br />
+                     <p>Try again later, please!</p>
+                  </div>
+               )
+            })
       }
       if (mobileWidth) {
          handleClickOpen()
