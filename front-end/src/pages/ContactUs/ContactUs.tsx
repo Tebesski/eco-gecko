@@ -1,7 +1,6 @@
 import { useState, useEffect, ChangeEvent, FormEvent, useRef } from "react"
 import Title from "../../components/Title"
 import FSC from "../../components/FSC"
-import emailjs from "@emailjs/browser"
 import useWindowSize from "../../hooks/useWindowSize"
 import {
    Dialog,
