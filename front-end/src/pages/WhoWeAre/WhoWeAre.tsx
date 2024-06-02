@@ -103,7 +103,7 @@ export default function WhoWeAre() {
       <section className="flex gap-x-3 ml-3">
          <div
             className={`text-sm flex flex-col gap-y-4 ${
-               mobileWidth ? "w-full" : "w-3/5"
+               mobileWidth ? "w-full" : "md:w-full lg:w-3/4 xl:w-3/5"
             }`}
          >
             <span className={`${mobileWidth ? "text-center" : "text-lg"}`}>
@@ -162,7 +162,7 @@ export default function WhoWeAre() {
                {items.map((item, index) => (
                   <div
                      key={uuidv4()}
-                     className={`p-3 h-32 overflow-clip overflow-y-scroll ${
+                     className={`p-3 h-32 overflow-clip ${
                         index % 2 === 0
                            ? "bg-green-main text-white"
                            : "bg-green-light text-graphite"
@@ -176,7 +176,11 @@ export default function WhoWeAre() {
             </div>
          </div>
 
-         {!mobileWidth && <FSC topVal={"top-34"} leftVal={"left-[68%]"} />}
+         {!mobileWidth && (
+            <div className="xs:hidden lg:block">
+               <FSC topVal={"top-34"} leftVal={"left-[68%]"} />
+            </div>
+         )}
       </section>
    )
 }

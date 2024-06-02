@@ -106,7 +106,7 @@ export default function ContactUs() {
       e.preventDefault()
       if (validateForm()) {
          setLoading(true)
-         fetch("http://localhost:3000/send-email", {
+         fetch(import.meta.env.BACKEND_BASE_URL + "send-email", {
             method: "POST",
             headers: {
                "Content-Type": "application/json",

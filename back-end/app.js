@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3008
 
 const express = require("express")
 const bodyParser = require("body-parser")
@@ -11,20 +11,24 @@ app.use(bodyParser.json())
 
 app.post("/send-email", async (req, res) => {
    let transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
+      service: "Outlook365",
+      host: "smtp.office365.com",
       port: 587,
       secure: false,
       auth: {
-         user: "keagan32@ethereal.email",
-         pass: "G8z6AM35x4NTGJex71",
+         user: process.env.SMTP_USER,
+         pass: process.env.SMTP_PASS,
+      },
+      tls: {
+         ciphers: "SSLv3",
+         rejectUnauthorized: false,
       },
    })
 
    let mailOptions = {
-      from: req.body.email,
-      to: "tebesski@gmail.com",
-      // sales@eco-gecko.com
-      subject: "Message from " + req.body.name,
+      from: process.env.SMTP_FROm,
+      to: process.env.SMTP_TO,
+      subject: `Message from ${req.body.name} (${req.body.email})`,
       html: `<div>
             <p>
                <strong>req.body.contact</strong>
