@@ -106,13 +106,17 @@ export default function ContactUs() {
       e.preventDefault()
       if (validateForm()) {
          setLoading(true)
-         fetch(import.meta.env.BACKEND_BASE_URL + "send-email", {
-            method: "POST",
-            headers: {
-               "Content-Type": "application/json",
-            },
-            body: JSON.stringify(form),
-         })
+         fetch(
+            import.meta.env.BACKEND_BASE_URL ||
+               "http://localhost:3008/" + "send-email",
+            {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify(form),
+            }
+         )
             .then((response) => response.json())
             .then((data) => {
                console.log(data)
