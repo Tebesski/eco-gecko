@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 import useWindowSize from "../../hooks/useWindowSize"
 import { usePopup } from "../../context/popupContext"
+import { useNavigate } from "react-router-dom"
 
 type Element = {
    element: ReactNode
@@ -24,6 +25,7 @@ export default function Listing({
    listMode,
    gridCount,
 }: ListingType) {
+   const navigate = useNavigate()
    const mobileWidth = !useWindowSize(450)
    const { openPopup } = usePopup()
 
@@ -89,7 +91,7 @@ export default function Listing({
    }
 
    const handleButtonClick = () => {
-      window.open("https://www.eco-gecko.com/where-to-buy", "_blank")
+      navigate("/where-to-buy")
    }
 
    const renderInfo = () => {
